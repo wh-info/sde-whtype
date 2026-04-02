@@ -1,16 +1,15 @@
 {
   "meta": {
     "sdeBuild": 3284752,
-    "generatedAt": "2026-04-02T20:19:25.227Z",
+    "generatedAt": "2026-04-02T20:26:37.015Z",
     "count": 130
   },
   "wormholes": [
     {
       "name": "A009",
       "typeID": 34439,
-      "targetClass": 13,
-      "targetClassLabel": "Shattered",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 13,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -18,9 +17,8 @@
     {
       "name": "A239",
       "typeID": 30678,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -28,9 +26,8 @@
     {
       "name": "A641",
       "typeID": 30657,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 7,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -38,9 +35,8 @@
     {
       "name": "A982",
       "typeID": 30685,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 24,
+      "targetSystemClass": 6,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -48,9 +44,8 @@
     {
       "name": "B041",
       "typeID": 30645,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 48,
+      "targetSystemClass": 6,
+      "maxStableTime": 2880,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -58,9 +53,8 @@
     {
       "name": "B274",
       "typeID": 30677,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 7,
+      "maxStableTime": 1440,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -68,9 +62,8 @@
     {
       "name": "B449",
       "typeID": 30647,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 7,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -78,9 +71,8 @@
     {
       "name": "B520",
       "typeID": 30713,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 48,
+      "targetSystemClass": 7,
+      "maxStableTime": 2880,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -88,9 +80,8 @@
     {
       "name": "B735",
       "typeID": 35651,
-      "targetClass": 15,
-      "targetClassLabel": "Barbican",
-      "maxStableTime": 16,
+      "targetSystemClass": 15,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -98,9 +89,8 @@
     {
       "name": "C008",
       "typeID": 34138,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 5,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -108,9 +98,8 @@
     {
       "name": "C125",
       "typeID": 30661,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -118,9 +107,8 @@
     {
       "name": "C140",
       "typeID": 30705,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -128,9 +116,8 @@
     {
       "name": "C247",
       "typeID": 30691,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 16,
+      "targetSystemClass": 3,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -138,9 +125,8 @@
     {
       "name": "C248",
       "typeID": 30715,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -148,9 +134,8 @@
     {
       "name": "C391",
       "typeID": 30714,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 48,
+      "targetSystemClass": 8,
+      "maxStableTime": 2880,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -158,9 +143,8 @@
     {
       "name": "C414",
       "typeID": 35653,
-      "targetClass": 17,
-      "targetClassLabel": "Conflux",
-      "maxStableTime": 16,
+      "targetSystemClass": 17,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -168,9 +152,8 @@
     {
       "name": "C729",
       "typeID": 56026,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -178,9 +161,8 @@
     {
       "name": "C729",
       "typeID": 56535,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -188,9 +170,8 @@
     {
       "name": "C729",
       "typeID": 56536,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -198,9 +179,8 @@
     {
       "name": "C729",
       "typeID": 56537,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -208,9 +188,8 @@
     {
       "name": "C729",
       "typeID": 56538,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -218,9 +197,8 @@
     {
       "name": "C729",
       "typeID": 56539,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -228,9 +206,8 @@
     {
       "name": "C729",
       "typeID": 56545,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -238,9 +215,8 @@
     {
       "name": "C729",
       "typeID": 56546,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -248,9 +224,8 @@
     {
       "name": "C729",
       "typeID": 56547,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -258,9 +233,8 @@
     {
       "name": "C729",
       "typeID": 56548,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -268,9 +242,8 @@
     {
       "name": "C729",
       "typeID": 56549,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -278,9 +251,8 @@
     {
       "name": "C729",
       "typeID": 56550,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -288,9 +260,8 @@
     {
       "name": "C729",
       "typeID": 56551,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -298,9 +269,8 @@
     {
       "name": "C729",
       "typeID": 56552,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -308,9 +278,8 @@
     {
       "name": "C729",
       "typeID": 56553,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -318,9 +287,8 @@
     {
       "name": "C729",
       "typeID": 56554,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -328,9 +296,8 @@
     {
       "name": "C729",
       "typeID": 56555,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -338,9 +305,8 @@
     {
       "name": "C729",
       "typeID": 56556,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -348,9 +314,8 @@
     {
       "name": "C729",
       "typeID": 56557,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -358,9 +323,8 @@
     {
       "name": "C729",
       "typeID": 56558,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -368,9 +332,8 @@
     {
       "name": "C729",
       "typeID": 56559,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -378,9 +341,8 @@
     {
       "name": "C729",
       "typeID": 56560,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -388,9 +350,8 @@
     {
       "name": "C729",
       "typeID": 56561,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -398,9 +359,8 @@
     {
       "name": "C729",
       "typeID": 56562,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -408,9 +368,8 @@
     {
       "name": "C729",
       "typeID": 56563,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -418,9 +377,8 @@
     {
       "name": "C729",
       "typeID": 56564,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -428,9 +386,8 @@
     {
       "name": "C729",
       "typeID": 56565,
-      "targetClass": -1,
-      "targetClassLabel": "Exit WH (unknown)",
-      "maxStableTime": 12,
+      "targetSystemClass": -1,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
       "massRegeneration": 0
@@ -438,9 +395,8 @@
     {
       "name": "D364",
       "typeID": 30699,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -448,9 +404,8 @@
     {
       "name": "D382",
       "typeID": 30672,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -458,9 +413,8 @@
     {
       "name": "D792",
       "typeID": 30704,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 7,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -468,9 +422,8 @@
     {
       "name": "D845",
       "typeID": 30695,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 7,
+      "maxStableTime": 1440,
       "maxStableMass": 5000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -478,9 +431,8 @@
     {
       "name": "E004",
       "typeID": 34134,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 1,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -488,9 +440,8 @@
     {
       "name": "E175",
       "typeID": 30701,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 16,
+      "targetSystemClass": 4,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -498,9 +449,8 @@
     {
       "name": "E545",
       "typeID": 30679,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -508,9 +458,8 @@
     {
       "name": "E587",
       "typeID": 34370,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -518,9 +467,8 @@
     {
       "name": "F135",
       "typeID": 34372,
-      "targetClass": 12,
-      "targetClassLabel": "Thera",
-      "maxStableTime": 16,
+      "targetSystemClass": 12,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -528,9 +476,8 @@
     {
       "name": "F216",
       "typeID": 56542,
-      "targetClass": 25,
-      "targetClassLabel": "Pochven",
-      "maxStableTime": 12,
+      "targetSystemClass": 25,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -538,9 +485,8 @@
     {
       "name": "F216",
       "typeID": 56543,
-      "targetClass": 25,
-      "targetClassLabel": "Pochven",
-      "maxStableTime": 12,
+      "targetSystemClass": 25,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -548,9 +494,8 @@
     {
       "name": "F353",
       "typeID": 34371,
-      "targetClass": 12,
-      "targetClassLabel": "Thera",
-      "maxStableTime": 16,
+      "targetSystemClass": 12,
+      "maxStableTime": 960,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -558,9 +503,8 @@
     {
       "name": "G008",
       "typeID": 34139,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 6,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -568,9 +512,8 @@
     {
       "name": "G024",
       "typeID": 30708,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -578,9 +521,8 @@
     {
       "name": "H121",
       "typeID": 30660,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -588,9 +530,8 @@
     {
       "name": "H296",
       "typeID": 30702,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -598,9 +539,8 @@
     {
       "name": "H900",
       "typeID": 30693,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -608,9 +548,8 @@
     {
       "name": "I078",
       "typeID": 92287,
-      "targetClass": 25,
-      "targetClassLabel": "Pochven",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 25,
+      "maxStableTime": 270,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -618,9 +557,8 @@
     {
       "name": "I182",
       "typeID": 30681,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -628,9 +566,8 @@
     {
       "name": "J244",
       "typeID": 30667,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -638,9 +575,8 @@
     {
       "name": "J244",
       "typeID": 73748,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -648,9 +584,8 @@
     {
       "name": "J377",
       "typeID": 73749,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -658,9 +593,8 @@
     {
       "name": "J492",
       "typeID": 87827,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -668,8 +602,7 @@
     {
       "name": "K162",
       "typeID": 30831,
-      "targetClass": null,
-      "targetClassLabel": null,
+      "targetSystemClass": null,
       "maxStableTime": null,
       "maxStableMass": null,
       "maxJumpMass": null,
@@ -678,9 +611,8 @@
     {
       "name": "K329",
       "typeID": 30697,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -688,9 +620,8 @@
     {
       "name": "K346",
       "typeID": 30688,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -698,9 +629,8 @@
     {
       "name": "L005",
       "typeID": 34135,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 2,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -708,9 +638,8 @@
     {
       "name": "L031",
       "typeID": 34367,
-      "targetClass": 12,
-      "targetClassLabel": "Thera",
-      "maxStableTime": 16,
+      "targetSystemClass": 12,
+      "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -718,9 +647,8 @@
     {
       "name": "L477",
       "typeID": 30709,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 16,
+      "targetSystemClass": 3,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -728,9 +656,8 @@
     {
       "name": "L614",
       "typeID": 30664,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -738,9 +665,8 @@
     {
       "name": "L687",
       "typeID": 92288,
-      "targetClass": 25,
-      "targetClassLabel": "Pochven",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 25,
+      "maxStableTime": 270,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -748,9 +674,8 @@
     {
       "name": "M001",
       "typeID": 34137,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 4,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -758,9 +683,8 @@
     {
       "name": "M164",
       "typeID": 34366,
-      "targetClass": 12,
-      "targetClassLabel": "Thera",
-      "maxStableTime": 16,
+      "targetSystemClass": 12,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -768,9 +692,8 @@
     {
       "name": "M267",
       "typeID": 30700,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 16,
+      "targetSystemClass": 3,
+      "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -778,9 +701,8 @@
     {
       "name": "M555",
       "typeID": 30644,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -788,9 +710,8 @@
     {
       "name": "M609",
       "typeID": 30663,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 16,
+      "targetSystemClass": 4,
+      "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -798,9 +719,8 @@
     {
       "name": "N062",
       "typeID": 30675,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -808,9 +728,8 @@
     {
       "name": "N110",
       "typeID": 30666,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 7,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -818,9 +737,8 @@
     {
       "name": "N290",
       "typeID": 30696,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -828,9 +746,8 @@
     {
       "name": "N432",
       "typeID": 30643,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -838,9 +755,8 @@
     {
       "name": "N766",
       "typeID": 30690,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -848,9 +764,8 @@
     {
       "name": "N770",
       "typeID": 30684,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -858,9 +773,8 @@
     {
       "name": "N944",
       "typeID": 30648,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -868,9 +782,8 @@
     {
       "name": "N968",
       "typeID": 30682,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 16,
+      "targetSystemClass": 3,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -878,9 +791,8 @@
     {
       "name": "O128",
       "typeID": 30642,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 24,
+      "targetSystemClass": 4,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -888,9 +800,8 @@
     {
       "name": "O477",
       "typeID": 30673,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 16,
+      "targetSystemClass": 3,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -898,9 +809,8 @@
     {
       "name": "O546",
       "typeID": 92289,
-      "targetClass": 25,
-      "targetClassLabel": "Pochven",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 25,
+      "maxStableTime": 270,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -908,9 +818,8 @@
     {
       "name": "O883",
       "typeID": 30662,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 16,
+      "targetSystemClass": 3,
+      "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -918,9 +827,8 @@
     {
       "name": "P060",
       "typeID": 30689,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -928,9 +836,8 @@
     {
       "name": "Q003",
       "typeID": 34140,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 9,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -938,9 +845,8 @@
     {
       "name": "Q063",
       "typeID": 34368,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 7,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -948,9 +854,8 @@
     {
       "name": "Q317",
       "typeID": 30707,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -958,9 +863,8 @@
     {
       "name": "QA Wormhole A",
       "typeID": 32894,
-      "targetClass": 11,
-      "targetClassLabel": "Jove/unknown",
-      "maxStableTime": 24,
+      "targetSystemClass": 11,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -968,9 +872,8 @@
     {
       "name": "QA Wormhole B",
       "typeID": 32895,
-      "targetClass": 10,
-      "targetClassLabel": "Jove/unknown",
-      "maxStableTime": 24,
+      "targetSystemClass": 10,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -978,9 +881,8 @@
     {
       "name": "R051",
       "typeID": 30658,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 8,
+      "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -988,9 +890,8 @@
     {
       "name": "R081",
       "typeID": 56541,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 12,
+      "targetSystemClass": 4,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -998,9 +899,8 @@
     {
       "name": "R259",
       "typeID": 35654,
-      "targetClass": 18,
-      "targetClassLabel": "Redoubt",
-      "maxStableTime": 16,
+      "targetSystemClass": 18,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1008,9 +908,8 @@
     {
       "name": "R474",
       "typeID": 30676,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 24,
+      "targetSystemClass": 6,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1018,9 +917,8 @@
     {
       "name": "R943",
       "typeID": 30583,
-      "targetClass": 2,
-      "targetClassLabel": "C2",
-      "maxStableTime": 16,
+      "targetSystemClass": 2,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1028,9 +926,8 @@
     {
       "name": "S047",
       "typeID": 30686,
-      "targetClass": 7,
-      "targetClassLabel": "High-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 7,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1038,9 +935,8 @@
     {
       "name": "S199",
       "typeID": 30649,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -1048,9 +944,8 @@
     {
       "name": "S804",
       "typeID": 30665,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 24,
+      "targetSystemClass": 6,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -1058,9 +953,8 @@
     {
       "name": "S877",
       "typeID": 35650,
-      "targetClass": 14,
-      "targetClassLabel": "Sentinel",
-      "maxStableTime": 16,
+      "targetSystemClass": 14,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1068,9 +962,8 @@
     {
       "name": "T405",
       "typeID": 30683,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 16,
+      "targetSystemClass": 4,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1078,9 +971,8 @@
     {
       "name": "T458",
       "typeID": 34338,
-      "targetClass": 12,
-      "targetClassLabel": "Thera",
-      "maxStableTime": 16,
+      "targetSystemClass": 12,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -1088,9 +980,8 @@
     {
       "name": "U210",
       "typeID": 30687,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 24,
+      "targetSystemClass": 8,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1098,9 +989,8 @@
     {
       "name": "U319",
       "typeID": 30646,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 48,
+      "targetSystemClass": 6,
+      "maxStableTime": 2880,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -1108,9 +998,8 @@
     {
       "name": "U372",
       "typeID": 56544,
-      "targetClass": 25,
-      "targetClassLabel": "Pochven",
-      "maxStableTime": 12,
+      "targetSystemClass": 25,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1118,9 +1007,8 @@
     {
       "name": "U574",
       "typeID": 30694,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 24,
+      "targetSystemClass": 6,
+      "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1128,9 +1016,8 @@
     {
       "name": "V283",
       "typeID": 30659,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -1138,9 +1025,8 @@
     {
       "name": "V301",
       "typeID": 30680,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -1148,9 +1034,8 @@
     {
       "name": "V753",
       "typeID": 30703,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 24,
+      "targetSystemClass": 6,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -1158,9 +1043,8 @@
     {
       "name": "V898",
       "typeID": 34369,
-      "targetClass": 8,
-      "targetClassLabel": "Low-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 8,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
       "massRegeneration": 0
@@ -1168,9 +1052,8 @@
     {
       "name": "V911",
       "typeID": 30711,
-      "targetClass": 5,
-      "targetClassLabel": "C5",
-      "maxStableTime": 24,
+      "targetSystemClass": 5,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -1178,9 +1061,8 @@
     {
       "name": "V928",
       "typeID": 35652,
-      "targetClass": 16,
-      "targetClassLabel": "Vidette",
-      "maxStableTime": 16,
+      "targetSystemClass": 16,
+      "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1188,9 +1070,8 @@
     {
       "name": "W237",
       "typeID": 30712,
-      "targetClass": 6,
-      "targetClassLabel": "C6",
-      "maxStableTime": 24,
+      "targetSystemClass": 6,
+      "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -1198,9 +1079,8 @@
     {
       "name": "X450",
       "typeID": 56540,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 12,
+      "targetSystemClass": 9,
+      "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1208,9 +1088,8 @@
     {
       "name": "X702",
       "typeID": 30584,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 24,
+      "targetSystemClass": 3,
+      "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1218,9 +1097,8 @@
     {
       "name": "X877",
       "typeID": 30692,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 16,
+      "targetSystemClass": 4,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1228,9 +1106,8 @@
     {
       "name": "Y683",
       "typeID": 30674,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 16,
+      "targetSystemClass": 4,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1238,9 +1115,8 @@
     {
       "name": "Y790",
       "typeID": 30698,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -1248,9 +1124,8 @@
     {
       "name": "Z006",
       "typeID": 34136,
-      "targetClass": 3,
-      "targetClassLabel": "C3",
-      "maxStableTime": 4.5,
+      "targetSystemClass": 3,
+      "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
       "massRegeneration": 3000000000
@@ -1258,9 +1133,8 @@
     {
       "name": "Z060",
       "typeID": 30668,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -1268,9 +1142,8 @@
     {
       "name": "Z142",
       "typeID": 30706,
-      "targetClass": 9,
-      "targetClassLabel": "Null-Sec",
-      "maxStableTime": 16,
+      "targetSystemClass": 9,
+      "maxStableTime": 960,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
       "massRegeneration": 0
@@ -1278,9 +1151,8 @@
     {
       "name": "Z457",
       "typeID": 30710,
-      "targetClass": 4,
-      "targetClassLabel": "C4",
-      "maxStableTime": 16,
+      "targetSystemClass": 4,
+      "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
       "massRegeneration": 0
@@ -1288,9 +1160,8 @@
     {
       "name": "Z647",
       "typeID": 30671,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0
@@ -1298,9 +1169,8 @@
     {
       "name": "Z971",
       "typeID": 30579,
-      "targetClass": 1,
-      "targetClassLabel": "C1",
-      "maxStableTime": 16,
+      "targetSystemClass": 1,
+      "maxStableTime": 960,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0

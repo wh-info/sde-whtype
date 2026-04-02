@@ -189,7 +189,7 @@
     <input type="text" id="search" class="search-box"
       placeholder="Search by name (e.g. C247, R943, A009)..." autofocus>
     <select id="classFilter" class="filter-select">
-      <option value="">All destinations</option>
+      <option value="">All targetSystemClass</option>
     </select>
   </div>
 
@@ -200,15 +200,16 @@
       <thead>
         <tr>
           <th data-key="name">Name <span class="arrow"></span></th>
-          <th data-key="targetClassLabel">Destination <span class="arrow"></span></th>
-          <th data-key="maxStableTime">Lifetime <span class="arrow"></span></th>
-          <th data-key="maxStableMass">Total Mass <span class="arrow"></span></th>
-          <th data-key="maxJumpMass">Jump Mass <span class="arrow"></span></th>
-          <th data-key="massRegeneration">Mass Regen <span class="arrow"></span></th>
+          <th data-key="typeID">typeID <span class="arrow"></span></th>
+          <th data-key="targetSystemClass">targetSystemClass <span class="arrow"></span></th>
+          <th data-key="maxStableTime">maxStableTime <span class="arrow"></span></th>
+          <th data-key="maxStableMass">maxStableMass <span class="arrow"></span></th>
+          <th data-key="maxJumpMass">maxJumpMass <span class="arrow"></span></th>
+          <th data-key="massRegeneration">massRegeneration <span class="arrow"></span></th>
         </tr>
       </thead>
       <tbody id="tbody">
-        <tr><td colspan="6" class="loading">Loading wormhole data...</td></tr>
+        <tr><td colspan="7" class="loading">Loading wormhole data...</td></tr>
       </tbody>
     </table>
   </div>
@@ -233,20 +234,8 @@
       const statsEl = document.getElementById('stats');
       const metaEl = document.getElementById('meta');
 
-      // Format mass as readable string
-      function fmtMass(kg) {
-        if (kg == null) return '—';
-        if (kg >= 1e9) return (kg / 1e9).toFixed(1).replace(/\.0$/, '') + ' B kg';
-        if (kg >= 1e6) return (kg / 1e6).toFixed(0) + ' M kg';
-        if (kg >= 1e3) return (kg / 1e3).toFixed(0) + ' K kg';
-        return kg.toLocaleString() + ' kg';
-      }
-
-      // Format hours
-      function fmtTime(hours) {
-        if (hours == null) return '—';
-        if (Number.isInteger(hours)) return hours + ' h';
-        return hours + ' h';
+      function val(v) {
+        return v != null ? v : '—';
       }
 
       function getFiltered() {
@@ -254,7 +243,7 @@
         const cls = classFilter.value;
         return wormholes.filter((w) => {
           if (q && !w.name.toUpperCase().includes(q)) return false;
-          if (cls && w.targetClassLabel !== cls) return false;
+          if (cls && String(w.targetSystemClass) !== cls) return false;
           return true;
         });
       }
@@ -277,18 +266,19 @@
         statsEl.textContent = `Showing ${filtered.length} of ${wormholes.length} wormhole types`;
 
         if (filtered.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="6" class="no-results">No matching wormhole types found.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="no-results">No matching wormhole types found.</td></tr>';
           return;
         }
 
         tbody.innerHTML = filtered.map((w) => `
           <tr>
             <td class="wh-name">${w.name}</td>
-            <td>${w.targetClassLabel || '—'}</td>
-            <td>${fmtTime(w.maxStableTime)}</td>
-            <td class="mass-value">${fmtMass(w.maxStableMass)}</td>
-            <td class="mass-value">${fmtMass(w.maxJumpMass)}</td>
-            <td class="mass-value">${fmtMass(w.massRegeneration)}</td>
+            <td>${val(w.typeID)}</td>
+            <td>${val(w.targetSystemClass)}</td>
+            <td>${val(w.maxStableTime)}</td>
+            <td>${val(w.maxStableMass)}</td>
+            <td>${val(w.maxJumpMass)}</td>
+            <td>${val(w.massRegeneration)}</td>
           </tr>
         `).join('');
 
@@ -329,12 +319,12 @@
           meta = data.meta;
           wormholes = data.wormholes;
 
-          // Populate class filter dropdown
-          const classes = [...new Set(wormholes.map((w) => w.targetClassLabel).filter(Boolean))];
-          classes.sort();
+          // Populate class filter dropdown with raw values
+          const classes = [...new Set(wormholes.map((w) => w.targetSystemClass).filter((v) => v != null))];
+          classes.sort((a, b) => a - b);
           for (const cls of classes) {
             const opt = document.createElement('option');
-            opt.value = cls;
+            opt.value = String(cls);
             opt.textContent = cls;
             classFilter.appendChild(opt);
           }
@@ -348,7 +338,7 @@
           render();
         })
         .catch(() => {
-          tbody.innerHTML = '<tr><td colspan="6" class="no-results">Failed to load wormhole data.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="7" class="no-results">Failed to load wormhole data.</td></tr>';
         });
     })();
   </script>

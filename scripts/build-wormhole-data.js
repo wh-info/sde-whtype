@@ -28,30 +28,6 @@ const ATTR = {
   maxJumpMass: 1385,       // kg
 };
 
-// Human-readable labels for target system classes
-const SYSTEM_CLASS_LABELS = {
-  '-1': 'Exit WH (unknown)',
-  1: 'C1',
-  2: 'C2',
-  3: 'C3',
-  4: 'C4',
-  5: 'C5',
-  6: 'C6',
-  7: 'High-Sec',
-  8: 'Low-Sec',
-  9: 'Null-Sec',
-  10: 'Jove/unknown',
-  11: 'Jove/unknown',
-  12: 'Thera',
-  13: 'Shattered',
-  14: 'Sentinel',
-  15: 'Barbican',
-  16: 'Vidette',
-  17: 'Conflux',
-  18: 'Redoubt',
-  25: 'Pochven',
-};
-
 // Validation thresholds — if data falls outside these, something is wrong
 const VALIDATION = {
   minWormholeTypes: 80,     // SDE has had ~100-130, alert if way below
@@ -165,22 +141,14 @@ function main() {
       return a ? a.value : null;
     };
 
-    const targetClass = getAttr(ATTR.targetSystemClass);
-    const maxStableTimeMin = getAttr(ATTR.maxStableTime);
-
     const record = {
       name,
       typeID,
-      targetClass: targetClass != null ? targetClass : null,
-      targetClassLabel: targetClass != null
-        ? (SYSTEM_CLASS_LABELS[String(targetClass)] || `Class ${targetClass}`)
-        : null,
-      maxStableTime: maxStableTimeMin != null
-        ? Math.round(maxStableTimeMin / 60 * 100) / 100
-        : null,
-      maxStableMass: getAttr(ATTR.maxStableMass),
-      maxJumpMass: getAttr(ATTR.maxJumpMass),
-      massRegeneration: getAttr(ATTR.massRegeneration),
+      targetSystemClass: getAttr(ATTR.targetSystemClass),
+      maxStableTime: getAttr(ATTR.maxStableTime),           // minutes
+      maxStableMass: getAttr(ATTR.maxStableMass),            // kg
+      maxJumpMass: getAttr(ATTR.maxJumpMass),                // kg
+      massRegeneration: getAttr(ATTR.massRegeneration),      // kg
     };
 
     wormholes.push(record);
