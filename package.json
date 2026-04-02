@@ -1,0 +1,15 @@
+{
+  "name": "sde-whtype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EVE Online SDE wormhole data for sde.whtype.info",
+  "scripts": {
+    "check": "node scripts/check-sde-version.js",
+    "download": "node scripts/download-sde.js",
+    "build": "node scripts/build-wormhole-data.js",
+    "update": "node scripts/check-sde-version.js && node scripts/download-sde.js && node scripts/build-wormhole-data.js"
+  },
+  "dependencies": {
+    "unzipper": "^0.12.3"
+  }
+}
