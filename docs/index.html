@@ -2,11 +2,334 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>sde.whtype.info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
+  <title>EVE Wormhole Types — sde.whtype.info</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-dim: #8b949e;
+      --accent: #58a6ff;
+      --accent-dim: #1f6feb;
+      --highlight: #ffc83d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header { margin-bottom: 1.5rem; }
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.5rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-box:focus { border-color: var(--accent); }
+
+    .search-box::placeholder { color: var(--text-dim); }
+
+    .filter-select {
+      padding: 0.5rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select:focus { border-color: var(--accent); }
+
+    .stats {
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: var(--surface);
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th:hover { color: var(--text); }
+    th.sorted { color: var(--accent); }
+    th .arrow { margin-left: 0.3em; font-size: 0.7rem; }
+
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(88, 166, 255, 0.04); }
+
+    .wh-name {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .mass-value { font-variant-numeric: tabular-nums; }
+
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-dim);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-dim);
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .controls { flex-direction: column; }
+      th, td { padding: 0.4rem 0.5rem; font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
-  <h1>SDE Wormhole Data</h1>
-  <p>Coming soon.</p>
+  <header>
+    <h1>EVE Wormhole Types</h1>
+    <div class="subtitle">Data from CCP's Static Data Export</div>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="search" class="search-box"
+      placeholder="Search by name (e.g. C247, R943, A009)..." autofocus>
+    <select id="classFilter" class="filter-select">
+      <option value="">All destinations</option>
+    </select>
+  </div>
+
+  <div id="stats" class="stats"></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-key="name">Name <span class="arrow"></span></th>
+          <th data-key="targetClassLabel">Destination <span class="arrow"></span></th>
+          <th data-key="maxStableTime">Lifetime <span class="arrow"></span></th>
+          <th data-key="maxStableMass">Total Mass <span class="arrow"></span></th>
+          <th data-key="maxJumpMass">Jump Mass <span class="arrow"></span></th>
+          <th data-key="massRegeneration">Mass Regen <span class="arrow"></span></th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr><td colspan="6" class="loading">Loading wormhole data...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <div id="meta"></div>
+  </footer>
+
+  <script>
+    (function () {
+      let wormholes = [];
+      let meta = {};
+      let sortKey = 'name';
+      let sortAsc = true;
+
+      const tbody = document.getElementById('tbody');
+      const searchInput = document.getElementById('search');
+      const classFilter = document.getElementById('classFilter');
+      const statsEl = document.getElementById('stats');
+      const metaEl = document.getElementById('meta');
+
+      // Format mass as readable string
+      function fmtMass(kg) {
+        if (kg == null) return '—';
+        if (kg >= 1e9) return (kg / 1e9).toFixed(1).replace(/\.0$/, '') + ' B kg';
+        if (kg >= 1e6) return (kg / 1e6).toFixed(0) + ' M kg';
+        if (kg >= 1e3) return (kg / 1e3).toFixed(0) + ' K kg';
+        return kg.toLocaleString() + ' kg';
+      }
+
+      // Format hours
+      function fmtTime(hours) {
+        if (hours == null) return '—';
+        if (Number.isInteger(hours)) return hours + ' h';
+        return hours + ' h';
+      }
+
+      function getFiltered() {
+        const q = searchInput.value.trim().toUpperCase();
+        const cls = classFilter.value;
+        return wormholes.filter((w) => {
+          if (q && !w.name.toUpperCase().includes(q)) return false;
+          if (cls && w.targetClassLabel !== cls) return false;
+          return true;
+        });
+      }
+
+      function getSorted(list) {
+        return [...list].sort((a, b) => {
+          let va = a[sortKey];
+          let vb = b[sortKey];
+          if (va == null) va = sortAsc ? Infinity : -Infinity;
+          if (vb == null) vb = sortAsc ? Infinity : -Infinity;
+          if (typeof va === 'string') {
+            return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+          }
+          return sortAsc ? va - vb : vb - va;
+        });
+      }
+
+      function render() {
+        const filtered = getSorted(getFiltered());
+        statsEl.textContent = `Showing ${filtered.length} of ${wormholes.length} wormhole types`;
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" class="no-results">No matching wormhole types found.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = filtered.map((w) => `
+          <tr>
+            <td class="wh-name">${w.name}</td>
+            <td>${w.targetClassLabel || '—'}</td>
+            <td>${fmtTime(w.maxStableTime)}</td>
+            <td class="mass-value">${fmtMass(w.maxStableMass)}</td>
+            <td class="mass-value">${fmtMass(w.maxJumpMass)}</td>
+            <td class="mass-value">${fmtMass(w.massRegeneration)}</td>
+          </tr>
+        `).join('');
+
+        // Update sort indicators
+        document.querySelectorAll('th[data-key]').forEach((th) => {
+          const arrow = th.querySelector('.arrow');
+          if (th.dataset.key === sortKey) {
+            th.classList.add('sorted');
+            arrow.textContent = sortAsc ? '▲' : '▼';
+          } else {
+            th.classList.remove('sorted');
+            arrow.textContent = '';
+          }
+        });
+      }
+
+      // Event listeners
+      searchInput.addEventListener('input', render);
+      classFilter.addEventListener('change', render);
+
+      document.querySelectorAll('th[data-key]').forEach((th) => {
+        th.addEventListener('click', () => {
+          const key = th.dataset.key;
+          if (sortKey === key) {
+            sortAsc = !sortAsc;
+          } else {
+            sortKey = key;
+            sortAsc = true;
+          }
+          render();
+        });
+      });
+
+      // Load data
+      fetch('data/wormholes.json')
+        .then((r) => r.json())
+        .then((data) => {
+          meta = data.meta;
+          wormholes = data.wormholes;
+
+          // Populate class filter dropdown
+          const classes = [...new Set(wormholes.map((w) => w.targetClassLabel).filter(Boolean))];
+          classes.sort();
+          for (const cls of classes) {
+            const opt = document.createElement('option');
+            opt.value = cls;
+            opt.textContent = cls;
+            classFilter.appendChild(opt);
+          }
+
+          // Show metadata in footer
+          const date = new Date(meta.generatedAt).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'short', day: 'numeric'
+          });
+          metaEl.innerHTML = `SDE Build ${meta.sdeBuild} · Updated ${date} · ${meta.count} types · Source: <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
+
+          render();
+        })
+        .catch(() => {
+          tbody.innerHTML = '<tr><td colspan="6" class="no-results">Failed to load wormhole data.</td></tr>';
+        });
+    })();
+  </script>
 </body>
 </html>
