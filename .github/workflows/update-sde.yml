@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   update:
@@ -31,14 +32,28 @@ jobs:
         run: |
           node scripts/check-sde-version.js
           echo "updated=true" >> "$GITHUB_OUTPUT"
-        # Exit code 1 = already up to date, not an error
+        # Exit code 1 = no update needed, not an error
         continue-on-error: true
+
+      # Even if no wormhole changes, commit updated sde-version.txt
+      # so we don't re-check the same build next run
+      - name: Commit version bump (no wormhole changes)
+        if: steps.check.outputs.updated != 'true'
+        run: |
+          if ! git diff --quiet sde-version.txt; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add sde-version.txt
+            git commit -m "Skip SDE build $(cat sde-version.txt | tr -d '\n') — no wormhole changes"
+            git push
+          fi
 
       - name: Download and extract SDE
         if: steps.check.outputs.updated == 'true'
         run: node scripts/download-sde.js
 
       - name: Build wormhole data
+        id: build
         if: steps.check.outputs.updated == 'true'
         run: node scripts/build-wormhole-data.js
 
@@ -50,3 +65,27 @@ jobs:
           git add sde-version.txt docs/data/wormholes.json
           git commit -m "Update wormhole data to SDE build $(cat sde-version.txt | tr -d '\n')"
           git push
+
+      # Create a GitHub issue if any step fails
+      - name: Report failure
+        if: failure()
+        run: |
+          gh issue create \
+            --title "SDE update failed ($(date -u +%Y-%m-%d))" \
+            --body "$(cat <<'EOF'
+          The automated SDE update workflow failed.
+
+          **Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          This could mean:
+          - CCP changed the SDE download URL or format
+          - CCP changed the SDE schema (field names, structure)
+          - The wormhole groupID (988) or dogma attribute IDs changed
+          - A network error occurred during download
+          - GitHub Actions runner issue
+
+          Check the workflow logs for details.
+          EOF
+          )"
+        env:
+          GH_TOKEN: ${{ github.token }}

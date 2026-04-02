@@ -4,9 +4,11 @@
  * Reads the extracted JSONL files from tmp/ and produces a compact
  * docs/data/wormholes.json for the frontend.
  *
+ * Includes schema validation to catch SDE format changes early.
+ *
  * Exit codes:
  *   0 = success
- *   1 = error
+ *   1 = error (schema change, missing data, etc.)
  */
 
 const fs = require('fs');
@@ -50,8 +52,26 @@ const SYSTEM_CLASS_LABELS = {
   25: 'Pochven',
 };
 
+// Validation thresholds — if data falls outside these, something is wrong
+const VALIDATION = {
+  minWormholeTypes: 80,     // SDE has had ~100-130, alert if way below
+  maxWormholeTypes: 300,    // alert if unexpectedly high
+  requiredFields: ['_key', 'groupID', 'name'],  // fields every type must have
+  requiredDogmaFields: ['_key', 'dogmaAttributes'],  // fields every dogma entry must have
+};
+
+const warnings = [];
+
+function warn(msg) {
+  warnings.push(msg);
+  console.warn(`  WARNING: ${msg}`);
+}
+
 function readJsonl(filename) {
   const filepath = path.join(TMP_DIR, filename);
+  if (!fs.existsSync(filepath)) {
+    throw new Error(`Missing file: ${filepath} — SDE structure may have changed.`);
+  }
   const content = fs.readFileSync(filepath, 'utf-8');
   const entries = [];
   for (const line of content.split('\n')) {
@@ -62,6 +82,34 @@ function readJsonl(filename) {
   return entries;
 }
 
+function validateType(t) {
+  for (const field of VALIDATION.requiredFields) {
+    if (t[field] === undefined) {
+      warn(`Type ${t._key || '?'} missing field '${field}' — SDE schema may have changed.`);
+      return false;
+    }
+  }
+  if (typeof t.name !== 'object' || !t.name.en) {
+    warn(`Type ${t._key} has unexpected name format — expected { en: "..." }.`);
+    return false;
+  }
+  return true;
+}
+
+function validateDogma(d) {
+  for (const field of VALIDATION.requiredDogmaFields) {
+    if (d[field] === undefined) {
+      warn(`Dogma entry ${d._key || '?'} missing field '${field}'.`);
+      return false;
+    }
+  }
+  if (!Array.isArray(d.dogmaAttributes)) {
+    warn(`Dogma entry ${d._key} has non-array dogmaAttributes.`);
+    return false;
+  }
+  return true;
+}
+
 function main() {
   console.log('Reading extracted SDE data...');
 
@@ -70,21 +118,45 @@ function main() {
   const whTypes = allTypes.filter((t) => t.groupID === WORMHOLE_GROUP_ID);
   console.log(`  Found ${whTypes.length} wormhole types out of ${allTypes.length} total types`);
 
+  // Validate count
+  if (whTypes.length < VALIDATION.minWormholeTypes) {
+    warn(`Only ${whTypes.length} wormhole types found (expected ${VALIDATION.minWormholeTypes}+). groupID may have changed.`);
+  }
+  if (whTypes.length > VALIDATION.maxWormholeTypes) {
+    warn(`Found ${whTypes.length} wormhole types (expected max ~${VALIDATION.maxWormholeTypes}). Check if groupID 988 still means wormholes.`);
+  }
+
   // 2. Load typeDogma, index by typeID
   const allDogma = readJsonl('typeDogma.jsonl');
   const dogmaByType = new Map();
   for (const d of allDogma) {
-    dogmaByType.set(d._key, d.dogmaAttributes || []);
+    if (validateDogma(d)) {
+      dogmaByType.set(d._key, d.dogmaAttributes || []);
+    }
   }
   console.log(`  Loaded ${allDogma.length} typeDogma entries`);
+
+  // Check how many wormholes have dogma data
+  // K162 (the exit side of connections) normally has no dogma — allow up to 2 missing
+  let missingDogma = 0;
+  for (const wh of whTypes) {
+    if (!dogmaByType.has(wh._key)) {
+      missingDogma++;
+      console.log(`  Note: ${wh.name?.en || wh._key} has no dogma attributes.`);
+    }
+  }
+  if (missingDogma > 2) {
+    warn(`${missingDogma} wormhole types have no dogma attributes (expected at most 2).`);
+  }
 
   // 3. Build compact wormhole records
   const wormholes = [];
 
   for (const wh of whTypes) {
+    if (!validateType(wh)) continue;
+
     const typeID = wh._key;
     const fullName = wh.name?.en || '';
-    // Extract short name: "Wormhole R943" → "R943"
     const name = fullName.replace(/^Wormhole\s+/i, '');
 
     const attrs = dogmaByType.get(typeID) || [];
@@ -104,7 +176,7 @@ function main() {
         ? (SYSTEM_CLASS_LABELS[String(targetClass)] || `Class ${targetClass}`)
         : null,
       maxStableTime: maxStableTimeMin != null
-        ? Math.round(maxStableTimeMin / 60 * 100) / 100  // convert to hours
+        ? Math.round(maxStableTimeMin / 60 * 100) / 100
         : null,
       maxStableMass: getAttr(ATTR.maxStableMass),
       maxJumpMass: getAttr(ATTR.maxJumpMass),
@@ -127,6 +199,7 @@ function main() {
       sdeBuild: parseInt(buildNumber, 10),
       generatedAt: new Date().toISOString(),
       count: wormholes.length,
+      warnings: warnings.length > 0 ? warnings : undefined,
     },
     wormholes,
   };
@@ -138,6 +211,13 @@ function main() {
   const sizeKB = (fs.statSync(OUT_FILE).size / 1024).toFixed(1);
   console.log(`\nWrote ${OUT_FILE}`);
   console.log(`  ${wormholes.length} wormhole types, ${sizeKB} KB`);
+
+  if (warnings.length > 0) {
+    console.log(`\n${warnings.length} WARNING(S) — possible SDE schema change:`);
+    warnings.forEach((w) => console.log(`  - ${w}`));
+    // Exit with error so the workflow flags it
+    process.exit(1);
+  }
 }
 
 main();
