@@ -154,6 +154,24 @@
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    .update-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .update-btn:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
     @media (max-width: 600px) {
       body { padding: 1rem; }
       .controls { flex-direction: column; }
@@ -197,6 +215,9 @@
 
   <footer>
     <div id="meta"></div>
+    <a class="update-btn"
+      href="https://github.com/wh-info/sde-whtype/actions/workflows/update-sde.yml"
+      target="_blank" rel="noopener">Check for SDE update</a>
   </footer>
 
   <script>

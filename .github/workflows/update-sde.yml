@@ -1,0 +1,52 @@
+name: Update SDE Wormhole Data
+
+on:
+  schedule:
+    # Runs every 2 days at 14:00 UTC (even days: 2nd, 4th, 6th, etc.)
+    - cron: '0 14 */2 * *'
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for new SDE version
+        id: check
+        run: |
+          node scripts/check-sde-version.js
+          echo "updated=true" >> "$GITHUB_OUTPUT"
+        # Exit code 1 = already up to date, not an error
+        continue-on-error: true
+
+      - name: Download and extract SDE
+        if: steps.check.outputs.updated == 'true'
+        run: node scripts/download-sde.js
+
+      - name: Build wormhole data
+        if: steps.check.outputs.updated == 'true'
+        run: node scripts/build-wormhole-data.js
+
+      - name: Commit and push changes
+        if: steps.check.outputs.updated == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sde-version.txt docs/data/wormholes.json
+          git commit -m "Update wormhole data to SDE build $(cat sde-version.txt | tr -d '\n')"
+          git push
