@@ -206,10 +206,11 @@
           <th data-key="maxStableMass">maxStableMass <span class="arrow"></span></th>
           <th data-key="maxJumpMass">maxJumpMass <span class="arrow"></span></th>
           <th data-key="massRegeneration">massRegeneration <span class="arrow"></span></th>
+          <th data-key="targetDistribution">targetDistribution <span class="arrow"></span></th>
         </tr>
       </thead>
       <tbody id="tbody">
-        <tr><td colspan="7" class="loading">Loading wormhole data...</td></tr>
+        <tr><td colspan="8" class="loading">Loading wormhole data...</td></tr>
       </tbody>
     </table>
   </div>
@@ -266,7 +267,7 @@
         statsEl.textContent = `Showing ${filtered.length} of ${wormholes.length} wormhole types`;
 
         if (filtered.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="7" class="no-results">No matching wormhole types found.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" class="no-results">No matching wormhole types found.</td></tr>';
           return;
         }
 
@@ -279,6 +280,7 @@
             <td>${val(w.maxStableMass)}</td>
             <td>${val(w.maxJumpMass)}</td>
             <td>${val(w.massRegeneration)}</td>
+            <td>${val(w.targetDistribution)}</td>
           </tr>
         `).join('');
 
@@ -338,7 +340,7 @@
           render();
         })
         .catch(() => {
-          tbody.innerHTML = '<tr><td colspan="7" class="no-results">Failed to load wormhole data.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="8" class="no-results">Failed to load wormhole data.</td></tr>';
         });
     })();
   </script>

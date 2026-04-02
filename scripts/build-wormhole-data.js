@@ -26,6 +26,7 @@ const ATTR = {
   maxStableMass: 1383,     // kg
   massRegeneration: 1384,  // kg
   maxJumpMass: 1385,       // kg
+  targetDistribution: 1457,
 };
 
 // Validation thresholds — if data falls outside these, something is wrong
@@ -149,6 +150,7 @@ function main() {
       maxStableMass: getAttr(ATTR.maxStableMass),            // kg
       maxJumpMass: getAttr(ATTR.maxJumpMass),                // kg
       massRegeneration: getAttr(ATTR.massRegeneration),      // kg
+      targetDistribution: getAttr(ATTR.targetDistribution),
     };
 
     wormholes.push(record);

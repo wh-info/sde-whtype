@@ -1,7 +1,7 @@
 {
   "meta": {
     "sdeBuild": 3284752,
-    "generatedAt": "2026-04-02T20:26:37.015Z",
+    "generatedAt": "2026-04-02T20:33:55.448Z",
     "count": 130
   },
   "wormholes": [
@@ -12,7 +12,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 296
     },
     {
       "name": "A239",
@@ -21,7 +22,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "A641",
@@ -30,7 +32,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "A982",
@@ -39,7 +42,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "B041",
@@ -48,7 +52,8 @@
       "maxStableTime": 2880,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "B274",
@@ -57,7 +62,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "B449",
@@ -66,7 +72,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "B520",
@@ -75,7 +82,8 @@
       "maxStableTime": 2880,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "B735",
@@ -84,7 +92,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 731
     },
     {
       "name": "C008",
@@ -93,7 +102,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 300
     },
     {
       "name": "C125",
@@ -102,7 +112,8 @@
       "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "C140",
@@ -111,7 +122,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "C247",
@@ -120,7 +132,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "C248",
@@ -129,7 +142,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "C391",
@@ -138,7 +152,8 @@
       "maxStableTime": 2880,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "C414",
@@ -147,7 +162,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 731
     },
     {
       "name": "C729",
@@ -156,7 +172,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2925
     },
     {
       "name": "C729",
@@ -165,7 +182,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2926
     },
     {
       "name": "C729",
@@ -174,7 +192,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2927
     },
     {
       "name": "C729",
@@ -183,7 +202,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2938
     },
     {
       "name": "C729",
@@ -192,7 +212,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2988
     },
     {
       "name": "C729",
@@ -201,7 +222,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2990
     },
     {
       "name": "C729",
@@ -210,7 +232,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2928
     },
     {
       "name": "C729",
@@ -219,7 +242,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2929
     },
     {
       "name": "C729",
@@ -228,7 +252,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2930
     },
     {
       "name": "C729",
@@ -237,7 +262,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2931
     },
     {
       "name": "C729",
@@ -246,7 +272,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2932
     },
     {
       "name": "C729",
@@ -255,7 +282,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2933
     },
     {
       "name": "C729",
@@ -264,7 +292,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2934
     },
     {
       "name": "C729",
@@ -273,7 +302,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2935
     },
     {
       "name": "C729",
@@ -282,7 +312,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2936
     },
     {
       "name": "C729",
@@ -291,7 +322,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2937
     },
     {
       "name": "C729",
@@ -300,7 +332,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2939
     },
     {
       "name": "C729",
@@ -309,7 +342,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2940
     },
     {
       "name": "C729",
@@ -318,7 +352,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2941
     },
     {
       "name": "C729",
@@ -327,7 +362,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2942
     },
     {
       "name": "C729",
@@ -336,7 +372,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2943
     },
     {
       "name": "C729",
@@ -345,7 +382,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2944
     },
     {
       "name": "C729",
@@ -354,7 +392,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2945
     },
     {
       "name": "C729",
@@ -363,7 +402,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2946
     },
     {
       "name": "C729",
@@ -372,7 +412,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2947
     },
     {
       "name": "C729",
@@ -381,7 +422,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2948
     },
     {
       "name": "C729",
@@ -390,7 +432,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 410000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2989
     },
     {
       "name": "D364",
@@ -399,7 +442,8 @@
       "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "D382",
@@ -408,7 +452,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "D792",
@@ -417,7 +462,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "D845",
@@ -426,7 +472,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 5000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "E004",
@@ -435,7 +482,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 296
     },
     {
       "name": "E175",
@@ -444,7 +492,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "E545",
@@ -453,7 +502,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "E587",
@@ -462,7 +512,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 709
     },
     {
       "name": "F135",
@@ -471,7 +522,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 709
     },
     {
       "name": "F216",
@@ -480,7 +532,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2951
     },
     {
       "name": "F216",
@@ -489,7 +542,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2952
     },
     {
       "name": "F353",
@@ -498,7 +552,8 @@
       "maxStableTime": 960,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "G008",
@@ -507,7 +562,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 301
     },
     {
       "name": "G024",
@@ -516,7 +572,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "H121",
@@ -525,7 +582,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "H296",
@@ -534,7 +592,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "H900",
@@ -543,7 +602,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "I078",
@@ -552,7 +612,8 @@
       "maxStableTime": 270,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 4134
     },
     {
       "name": "I182",
@@ -561,7 +622,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "J244",
@@ -570,7 +632,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "J244",
@@ -579,7 +642,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "J377",
@@ -588,7 +652,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 3128
     },
     {
       "name": "J492",
@@ -597,7 +662,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 3671
     },
     {
       "name": "K162",
@@ -606,7 +672,8 @@
       "maxStableTime": null,
       "maxStableMass": null,
       "maxJumpMass": null,
-      "massRegeneration": null
+      "massRegeneration": null,
+      "targetDistribution": null
     },
     {
       "name": "K329",
@@ -615,7 +682,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "K346",
@@ -624,7 +692,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "L005",
@@ -633,7 +702,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 297
     },
     {
       "name": "L031",
@@ -642,7 +712,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "L477",
@@ -651,7 +722,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "L614",
@@ -660,7 +732,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "L687",
@@ -669,7 +742,8 @@
       "maxStableTime": 270,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 4136
     },
     {
       "name": "M001",
@@ -678,7 +752,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 299
     },
     {
       "name": "M164",
@@ -687,7 +762,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "M267",
@@ -696,7 +772,8 @@
       "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "M555",
@@ -705,7 +782,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "M609",
@@ -714,7 +792,8 @@
       "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "N062",
@@ -723,7 +802,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "N110",
@@ -732,7 +812,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "N290",
@@ -741,7 +822,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "N432",
@@ -750,7 +832,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "N766",
@@ -759,7 +842,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "N770",
@@ -768,7 +852,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "N944",
@@ -777,7 +862,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "N968",
@@ -786,7 +872,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "O128",
@@ -795,7 +882,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "O477",
@@ -804,7 +892,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "O546",
@@ -813,7 +902,8 @@
       "maxStableTime": 270,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 4138
     },
     {
       "name": "O883",
@@ -822,7 +912,8 @@
       "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "P060",
@@ -831,7 +922,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "Q003",
@@ -840,7 +932,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 304
     },
     {
       "name": "Q063",
@@ -849,7 +942,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 709
     },
     {
       "name": "Q317",
@@ -858,7 +952,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "QA Wormhole A",
@@ -867,7 +962,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 628
     },
     {
       "name": "QA Wormhole B",
@@ -876,7 +972,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 629
     },
     {
       "name": "R051",
@@ -885,7 +982,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "R081",
@@ -894,7 +992,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2950
     },
     {
       "name": "R259",
@@ -903,7 +1002,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 731
     },
     {
       "name": "R474",
@@ -912,7 +1012,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "R943",
@@ -921,7 +1022,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 297
     },
     {
       "name": "S047",
@@ -930,7 +1032,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "S199",
@@ -939,7 +1042,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "S804",
@@ -948,7 +1052,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "S877",
@@ -957,7 +1062,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 731
     },
     {
       "name": "T405",
@@ -966,7 +1072,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "T458",
@@ -975,7 +1082,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 302
     },
     {
       "name": "U210",
@@ -984,7 +1092,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 303
     },
     {
       "name": "U319",
@@ -993,7 +1102,8 @@
       "maxStableTime": 2880,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "U372",
@@ -1002,7 +1112,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2953
     },
     {
       "name": "U574",
@@ -1011,7 +1122,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "V283",
@@ -1020,7 +1132,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "V301",
@@ -1029,7 +1142,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "V753",
@@ -1038,7 +1152,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "V898",
@@ -1047,7 +1162,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 1000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 709
     },
     {
       "name": "V911",
@@ -1056,7 +1172,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 300
     },
     {
       "name": "V928",
@@ -1065,7 +1182,8 @@
       "maxStableTime": 960,
       "maxStableMass": 750000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 731
     },
     {
       "name": "W237",
@@ -1074,7 +1192,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 301
     },
     {
       "name": "X450",
@@ -1083,7 +1202,8 @@
       "maxStableTime": 720,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 2949
     },
     {
       "name": "X702",
@@ -1092,7 +1212,8 @@
       "maxStableTime": 1440,
       "maxStableMass": 1000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 298
     },
     {
       "name": "X877",
@@ -1101,7 +1222,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "Y683",
@@ -1110,7 +1232,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "Y790",
@@ -1119,7 +1242,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "Z006",
@@ -1128,7 +1252,8 @@
       "maxStableTime": 270,
       "maxStableMass": 3000000000,
       "maxJumpMass": 5000000,
-      "massRegeneration": 3000000000
+      "massRegeneration": 3000000000,
+      "targetDistribution": 298
     },
     {
       "name": "Z060",
@@ -1137,7 +1262,8 @@
       "maxStableTime": 960,
       "maxStableMass": 1000000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "Z142",
@@ -1146,7 +1272,8 @@
       "maxStableTime": 960,
       "maxStableMass": 3300000000,
       "maxJumpMass": 2000000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 304
     },
     {
       "name": "Z457",
@@ -1155,7 +1282,8 @@
       "maxStableTime": 960,
       "maxStableMass": 2000000000,
       "maxJumpMass": 375000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 299
     },
     {
       "name": "Z647",
@@ -1164,7 +1292,8 @@
       "maxStableTime": 960,
       "maxStableMass": 500000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     },
     {
       "name": "Z971",
@@ -1173,7 +1302,8 @@
       "maxStableTime": 960,
       "maxStableMass": 100000000,
       "maxJumpMass": 62000000,
-      "massRegeneration": 0
+      "massRegeneration": 0,
+      "targetDistribution": 296
     }
   ]
 }
