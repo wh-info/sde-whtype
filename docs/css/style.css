@@ -109,6 +109,7 @@ body {
   font-size: 0.85em;
   letter-spacing: 0.02em;
   user-select: none;
+  pointer-events: none;
 }
 
 .search-hidden {
@@ -260,14 +261,19 @@ body {
 footer {
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--border);
-  color: var(--text-dim);
+  color: var(--text);
   font-size: 0.7rem;
   letter-spacing: 0.02em;
   text-align: center;
 }
 
-footer a { color: var(--accent); text-decoration: none; }
-footer a:hover { color: var(--text); }
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+  transition: border-color 0.15s;
+}
+footer a:hover { border-bottom-color: var(--text-dim); }
 
 .update-check {
   display: inline-flex;
