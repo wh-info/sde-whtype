@@ -266,6 +266,10 @@
         if (e.key === ' ') e.preventDefault();
       });
 
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value) render();
+      });
+
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;
         searchHint.style.display = searchInput.value ? 'none' : '';
