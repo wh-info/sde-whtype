@@ -17,11 +17,13 @@
       <div class="search-display" id="searchDisplay">
         <div class="search-brand">sde.<strong>wh</strong>type.info</div>
         <div class="search-sep"></div>
-        <div class="search-input-area">
-          <span class="search-typed" id="searchTyped"></span><span class="blink-cursor">_</span><span class="search-hint" id="searchHint">(A009, C247...)</span>
+        <div class="search-input-wrap">
+          <div class="search-input-area">
+            <span class="search-typed" id="searchTyped"></span><span class="blink-cursor">_</span><span class="search-hint" id="searchHint">(A009, C247...)</span>
+          </div>
+          <div class="results" id="results"></div>
+          <input type="text" id="search" class="search-hidden" autofocus autocomplete="off" spellcheck="false" maxlength="4">
         </div>
-        <div class="results" id="results"></div>
-        <input type="text" id="search" class="search-hidden" autofocus autocomplete="off" spellcheck="false">
       </div>
       <div class="stats-line" id="stats"></div>
     </div>
@@ -85,6 +87,7 @@
         resultsEl.innerHTML = filtered.map(w => `
           <div class="result-item" data-name="${w.name}">
             <span class="result-name">${w.name}</span>
+            <span class="result-typeid">${w.typeID != null ? w.typeID : '—'}</span>
           </div>
         `).join('');
 
@@ -104,8 +107,8 @@
           ['1381', 'targetSystemClass',  wh.targetSystemClass],
           ['1382', 'maxStableTime',      wh.maxStableTime],
           ['1383', 'maxStableMass',      wh.maxStableMass],
-          ['1385', 'maxJumpMass',        wh.maxJumpMass],
           ['1384', 'massRegeneration',   wh.massRegeneration],
+          ['1385', 'maxJumpMass',        wh.maxJumpMass],
           ['1457', 'targetDistribution', wh.targetDistribution],
         ];
 
@@ -120,6 +123,7 @@
 
       function closeModal() {
         overlay.classList.remove('open');
+        setTimeout(() => searchInput.focus(), 50);
       }
 
       document.getElementById('modalClose').addEventListener('click', closeModal);
@@ -135,7 +139,17 @@
         }
       });
 
+      // Clicking anywhere in the search display (including brand) focuses the input
       searchDisplay.addEventListener('click', () => searchInput.focus());
+
+      // Keep search always focused when modal is not open
+      searchInput.addEventListener('blur', () => {
+        setTimeout(() => {
+          if (!overlay.classList.contains('open')) {
+            searchInput.focus();
+          }
+        }, 150);
+      });
 
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;
