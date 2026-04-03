@@ -1,11 +1,13 @@
 :root {
-  --bg:        #0a0e10;
-  --surface:   #0c1c1c;
-  --border:    #0f2e2e;
-  --text:      #8de0e0;
-  --text-dim:  #1f5555;
-  --accent:    #00c8c8;
-  --highlight: #e8d44d;
+  --bg:           #0a0e10;
+  --surface:      #0c1c1c;
+  --surface-dark: #071414;
+  --border:       #0f2e2e;
+  --text:         #8de0e0;
+  --text-mid:     #00a8a8;
+  --text-dim:     #1f5555;
+  --accent:       #00c8c8;
+  --highlight:    #e8d44d;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,7 +90,7 @@ body {
 .search-input-wrap {
   flex: 1;
   position: relative;
-  background: var(--surface);
+  background: var(--surface-dark);
   min-width: 0;
 }
 
@@ -196,7 +198,7 @@ body {
 
 /* ── Modal ── */
 .modal {
-  background: var(--surface);
+  background: var(--surface-dark);
   border: 1px solid var(--border);
   width: 100%;
   max-width: 420px;
@@ -246,7 +248,7 @@ body {
 
 .attr-key {
   font-size: 0.85rem;
-  color: var(--text-dim);
+  color: var(--text-mid);
   letter-spacing: 0.04em;
   white-space: nowrap;
 }
@@ -261,7 +263,7 @@ body {
 footer {
   padding: 1rem 1.5rem;
   border-top: 1px solid var(--border);
-  color: var(--text);
+  color: var(--text-mid);
   font-size: 0.7rem;
   letter-spacing: 0.02em;
   text-align: center;
