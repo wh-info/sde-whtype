@@ -37,14 +37,6 @@
           <input type="text" id="search" class="search-hidden" autofocus autocomplete="off" spellcheck="false" maxlength="4">
         </div>
       </div>
-      <div class="view-toggle">
-        <span class="toggle-lbl" id="lblRaw">Raw</span>
-        <label class="toggle-pill" title="Toggle display mode">
-          <input type="checkbox" id="modeToggle">
-          <span class="toggle-track"><span class="toggle-thumb"></span></span>
-        </label>
-        <span class="toggle-lbl" id="lblReadable">Readable</span>
-      </div>
       <div class="stats-line" id="stats"></div>
     </div>
   </div>
@@ -55,16 +47,21 @@
       <button class="modal-close" id="modalClose" title="Close">✕</button>
       <div class="modal-name" id="modalName"></div>
       <div class="modal-attrs" id="modalAttrs"></div>
+      <hr class="modal-sep">
+      <div class="view-toggle">
+        <span class="toggle-lbl" id="lblRaw">Raw</span>
+        <label class="toggle-pill" title="Toggle display mode">
+          <input type="checkbox" id="modeToggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+        <span class="toggle-lbl" id="lblReadable">Readable</span>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
     <div id="meta"></div>
-    <div class="update-check">
-      <button class="update-btn" id="checkBtn">Check for SDE update</button>
-      <span class="update-status" id="checkStatus"></span>
-    </div>
   </footer>
 
   <script>
@@ -86,8 +83,6 @@
       const modeToggle    = document.getElementById('modeToggle');
       const lblRaw        = document.getElementById('lblRaw');
       const lblReadable   = document.getElementById('lblReadable');
-      const brandEl       = document.querySelector('.search-brand');
-      const viewToggle    = document.querySelector('.view-toggle');
       const searchWrapEl  = document.querySelector('.search-wrap');
 
       const SYSTEM_CLASS = {
@@ -166,11 +161,6 @@
         }
       }
 
-      // Size the toggle to match the brand label width
-      function alignToggle() {
-        viewToggle.style.width = brandEl.offsetWidth + 'px';
-      }
-
       function renderModal() {
         if (!currentWh) return;
         const readable = modeToggle.checked;
@@ -220,9 +210,6 @@
       lblReadable.addEventListener('click', () => { modeToggle.checked = true; onToggle(); });
       updateToggleLabels();
 
-      document.fonts.ready.then(alignToggle);
-      window.addEventListener('resize', alignToggle);
-
       document.getElementById('modalClose').addEventListener('click', closeModal);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
       document.addEventListener('keydown', e => {
@@ -259,28 +246,6 @@
             : '';
           metaEl.innerHTML = `SDE Build ${meta.sdeBuild}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
 
-          const checkBtn    = document.getElementById('checkBtn');
-          const checkStatus = document.getElementById('checkStatus');
-
-          checkBtn.addEventListener('click', async () => {
-            checkBtn.disabled = true;
-            checkStatus.innerHTML = '<span class="spinner"></span> Checking...';
-            try {
-              const res = await fetch('https://developers.eveonline.com/static-data/tranquility/latest.jsonl');
-              const latest = JSON.parse(await res.text());
-              if (latest.buildNumber > meta.sdeBuild) {
-                checkStatus.textContent = `New build: ${latest.buildNumber} (current: ${meta.sdeBuild})`;
-                checkStatus.style.color = '#e8d44d';
-              } else {
-                checkStatus.textContent = 'Up to date';
-                checkStatus.style.color = '';
-              }
-            } catch {
-              checkStatus.textContent = 'Check failed — try again later';
-              checkStatus.style.color = '#f85149';
-            }
-            checkBtn.disabled = false;
-          });
         })
         .catch(() => {
           statsEl.textContent = 'Failed to load wormhole data.';
