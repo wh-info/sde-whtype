@@ -209,11 +209,28 @@
       lblReadable.addEventListener('click', () => { modeToggle.checked = true; onToggle(); });
       updateToggleLabels();
 
+      async function triggerSdeCheck() {
+        resultsEl.classList.add('visible');
+        resultsEl.innerHTML = '<div class="no-results">Checking SDE version...</div>';
+        try {
+          const res = await fetch('https://developers.eveonline.com/static-data/tranquility/latest.jsonl');
+          const latest = JSON.parse(await res.text());
+          if (latest.buildNumber > meta.sdeBuild) {
+            resultsEl.innerHTML = `<div class="no-results" style="color:var(--highlight)">New build available: ${latest.buildNumber} &mdash; current: ${meta.sdeBuild}</div>`;
+          } else {
+            resultsEl.innerHTML = `<div class="no-results" style="color:var(--accent)">Up to date &mdash; Build ${meta.sdeBuild}</div>`;
+          }
+        } catch {
+          resultsEl.innerHTML = '<div class="no-results" style="color:#f85149">Check failed &mdash; try again later</div>';
+        }
+      }
+
       document.getElementById('modalClose').addEventListener('click', closeModal);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeModal();
         if (e.key === 'Enter' && !overlay.classList.contains('open')) {
+          if (searchInput.value === 'vSDE') { triggerSdeCheck(); return; }
           const items = resultsEl.querySelectorAll('.result-item');
           if (items.length === 1) {
             const wh = wormholes.find(w => w.name === items[0].dataset.name);
