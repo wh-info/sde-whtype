@@ -228,7 +228,18 @@
       document.getElementById('modalClose').addEventListener('click', closeModal);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
       document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+          if (overlay.classList.contains('open')) {
+            closeModal();
+          } else {
+            searchInput.value = '';
+            searchTyped.textContent = '';
+            searchHint.style.display = '';
+            resultsEl.classList.remove('visible');
+            resultsEl.innerHTML = '';
+            updateStatsPosition();
+          }
+        }
         if (e.key === 'Enter' && !overlay.classList.contains('open')) {
           if (searchInput.value === 'vSDE') { triggerSdeCheck(); return; }
           const items = resultsEl.querySelectorAll('.result-item');
@@ -249,6 +260,14 @@
           resultsEl.innerHTML = '';
           updateStatsPosition();
         }
+      });
+
+      searchInput.addEventListener('keydown', e => {
+        if (e.key === ' ') e.preventDefault();
+      });
+
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value) render();
       });
 
       searchInput.addEventListener('input', () => {
