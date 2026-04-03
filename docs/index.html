@@ -153,7 +153,7 @@
         if (resultsEl.classList.contains('visible') && statsEl.textContent) {
           const wrapRect    = searchWrapEl.getBoundingClientRect();
           const resultsBottom = resultsEl.getBoundingClientRect().bottom;
-          statsEl.style.top = (resultsBottom - wrapRect.top + 10) + 'px';
+          statsEl.style.top = (resultsBottom - wrapRect.top + 4) + 'px';
           statsEl.style.display = 'block';
         } else {
           statsEl.style.display = 'none';
@@ -241,6 +241,15 @@
 
       // Clicking anywhere in the search display (including brand) focuses the input
       searchDisplay.addEventListener('click', () => searchInput.focus());
+
+      // Hide results when clicking outside the search area
+      document.addEventListener('click', e => {
+        if (!searchDisplay.contains(e.target)) {
+          resultsEl.classList.remove('visible');
+          resultsEl.innerHTML = '';
+          updateStatsPosition();
+        }
+      });
 
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;

@@ -61,7 +61,7 @@ body {
   letter-spacing: 0.04em;
   cursor: text;
 }
-.search-display:focus-within { border-color: var(--accent); }
+.search-display:focus-within { border-color: var(--accent); border-style: dotted; }
 
 /* Brand label — separate element, fixed height, default cursor */
 .search-brand {
