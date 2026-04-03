@@ -314,6 +314,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
 .view-toggle {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
   margin-top: 0.6rem;
   font-size: 0.68rem;
@@ -321,7 +322,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
 }
 
 .toggle-lbl {
-  color: var(--text-dim);
+  color: var(--text-mid);
   cursor: pointer;
   user-select: none;
   transition: color 0.15s;
