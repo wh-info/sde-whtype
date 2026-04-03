@@ -27,7 +27,7 @@
     }
     *::-webkit-scrollbar { width: 6px; height: 6px; }
     *::-webkit-scrollbar-track { background: transparent; }
-    *::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    *::-webkit-scrollbar-thumb { background: var(--border); }
     *::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
 
     body {
@@ -62,16 +62,12 @@
 
     .search-display {
       width: 100%;
-      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 3px;
       font-size: 0.95rem;
       letter-spacing: 0.04em;
       cursor: text;
       display: flex;
       align-items: stretch;
-      transition: border-color 0.15s;
-      overflow: hidden;
       position: relative;
     }
     .search-display:focus-within { border-color: var(--accent); }
@@ -81,23 +77,30 @@
       display: flex;
       align-items: center;
       white-space: nowrap;
-      color: var(--text);
+      background: var(--accent);
+      color: #000;
       flex-shrink: 0;
     }
     .search-brand strong {
-      color: var(--accent);
-      font-weight: 700;
+      color: #000;
+      font-weight: 900;
     }
 
     .search-sep {
       width: 1px;
       background: var(--border);
       flex-shrink: 0;
-      align-self: stretch;
+    }
+
+    .search-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      min-width: 0;
     }
 
     .search-input-area {
-      flex: 1;
       padding: 0.65rem 1rem;
       display: flex;
       align-items: center;
@@ -127,12 +130,7 @@
 
     /* ── Results list ── */
     .results {
-      width: 100%;
-      max-width: 460px;
-      margin-top: 0.4rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      overflow: hidden;
+      border-top: 1px solid var(--border);
       display: none;
     }
     .results.visible { display: block; }
@@ -140,12 +138,10 @@
     .result-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 0.5rem 1rem;
       cursor: pointer;
       border-bottom: 1px solid var(--border);
       transition: background 0.1s;
-      gap: 1rem;
     }
     .result-item:last-child { border-bottom: none; }
     .result-item:hover { background: rgba(0, 200, 200, 0.06); }
@@ -156,13 +152,6 @@
       color: var(--highlight);
       letter-spacing: 0.06em;
       transition: color 0.1s;
-    }
-
-    .result-hint {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      letter-spacing: 0.04em;
-      white-space: nowrap;
     }
 
     .no-results {
@@ -196,7 +185,6 @@
     .modal {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 3px;
       width: 100%;
       max-width: 420px;
       margin: 1rem;
@@ -216,7 +204,6 @@
       cursor: pointer;
       padding: 0.15rem 0.35rem;
       line-height: 1;
-      border-radius: 2px;
     }
     .modal-close:hover { color: var(--text); }
 
@@ -281,7 +268,6 @@
       padding: 0.25rem 0.6rem;
       background: transparent;
       border: 1px solid var(--border);
-      border-radius: 3px;
       color: var(--accent);
       font-family: inherit;
       font-size: 0.68rem;
@@ -318,13 +304,16 @@
       <div class="search-display" id="searchDisplay">
         <span class="search-brand">sde.<strong>wh</strong>type.info</span>
         <span class="search-sep"></span>
-        <span class="search-input-area"><span class="search-typed" id="searchTyped"></span><span class="blink-cursor">_</span><span class="search-hint" id="searchHint">(A009, C247...)</span></span>
+        <div class="search-right">
+          <div class="search-input-area">
+            <span class="search-typed" id="searchTyped"></span><span class="blink-cursor">_</span><span class="search-hint" id="searchHint">(A009, C247...)</span>
+          </div>
+          <div class="results" id="results"></div>
+        </div>
         <input type="text" id="search" class="search-hidden" autofocus autocomplete="off" spellcheck="false">
       </div>
+      <div class="stats-line" id="stats"></div>
     </div>
-
-    <div class="results" id="results"></div>
-    <div class="stats-line" id="stats"></div>
   </div>
 
   <!-- Modal overlay -->
@@ -350,16 +339,16 @@
       let wormholes = [];
       let meta = {};
 
-      const searchInput  = document.getElementById('search');
-      const searchTyped  = document.getElementById('searchTyped');
+      const searchInput   = document.getElementById('search');
+      const searchTyped   = document.getElementById('searchTyped');
+      const searchHint    = document.getElementById('searchHint');
       const searchDisplay = document.getElementById('searchDisplay');
-      const resultsEl   = document.getElementById('results');
-      const statsEl     = document.getElementById('stats');
-      const overlay     = document.getElementById('overlay');
-      const metaEl      = document.getElementById('meta');
-      const modalName   = document.getElementById('modalName');
-      const modalAttrs  = document.getElementById('modalAttrs');
-
+      const resultsEl     = document.getElementById('results');
+      const statsEl       = document.getElementById('stats');
+      const overlay       = document.getElementById('overlay');
+      const metaEl        = document.getElementById('meta');
+      const modalName     = document.getElementById('modalName');
+      const modalAttrs    = document.getElementById('modalAttrs');
 
       function render() {
         const q = searchInput.value.trim().toUpperCase();
@@ -367,7 +356,7 @@
         if (!q) {
           resultsEl.classList.remove('visible');
           resultsEl.innerHTML = '';
-          statsEl.textContent = wormholes.length ? `${wormholes.length} wormhole types loaded` : '';
+          statsEl.textContent = '';
           return;
         }
 
@@ -385,7 +374,6 @@
         resultsEl.innerHTML = filtered.map(w => `
           <div class="result-item" data-name="${w.name}">
             <span class="result-name">${w.name}</span>
-            <span class="result-hint">${w.targetSystemClass != null ? w.targetSystemClass : '—'}</span>
           </div>
         `).join('');
 
@@ -438,8 +426,6 @@
 
       searchDisplay.addEventListener('click', () => searchInput.focus());
 
-      const searchHint = document.getElementById('searchHint');
-
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;
         searchHint.style.display = searchInput.value ? 'none' : '';
@@ -457,8 +443,6 @@
             year: 'numeric', month: 'short', day: 'numeric'
           });
           metaEl.innerHTML = `SDE Build ${meta.sdeBuild} · ${date} · ${meta.count} types · <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
-
-          statsEl.textContent = `${wormholes.length} wormhole types loaded`;
 
           const checkBtn    = document.getElementById('checkBtn');
           const checkStatus = document.getElementById('checkStatus');
