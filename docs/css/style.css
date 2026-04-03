@@ -255,7 +255,7 @@ body {
 
 .attr-val {
   font-size: 0.95rem;
-  color: var(--text);
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
 
@@ -309,6 +309,53 @@ footer a:hover { border-bottom-color: var(--text-dim); }
   vertical-align: middle;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── View toggle ── */
+.view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.6rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.toggle-lbl {
+  color: var(--text-dim);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+.toggle-lbl.active { color: var(--accent); }
+
+#modeToggle { display: none; }
+
+.toggle-pill { cursor: pointer; display: flex; }
+
+.toggle-track {
+  width: 2rem;
+  height: 0.85rem;
+  background: var(--surface-dark);
+  border: 1px solid var(--border);
+  position: relative;
+  transition: border-color 0.15s;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(50% - 2px);
+  bottom: 1px;
+  background: var(--text-dim);
+  transition: left 0.15s, background 0.15s;
+}
+
+#modeToggle:checked + .toggle-track { border-color: var(--accent); }
+#modeToggle:checked + .toggle-track .toggle-thumb {
+  left: calc(50% + 1px);
+  background: var(--accent);
+}
 
 @media (max-width: 500px) {
   .main { padding: 2rem 1rem 1rem; }

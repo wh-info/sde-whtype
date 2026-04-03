@@ -38,6 +38,14 @@
         </div>
       </div>
       <div class="stats-line" id="stats"></div>
+      <div class="view-toggle">
+        <span class="toggle-lbl" id="lblRaw">Raw</span>
+        <label class="toggle-pill" title="Toggle display mode">
+          <input type="checkbox" id="modeToggle">
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+        <span class="toggle-lbl" id="lblReadable">Readable</span>
+      </div>
     </div>
   </div>
 
@@ -63,6 +71,7 @@
     (function () {
       let wormholes = [];
       let meta = {};
+      let currentWh = null;
 
       const searchInput   = document.getElementById('search');
       const searchTyped   = document.getElementById('searchTyped');
@@ -74,6 +83,29 @@
       const metaEl        = document.getElementById('meta');
       const modalName     = document.getElementById('modalName');
       const modalAttrs    = document.getElementById('modalAttrs');
+      const modeToggle    = document.getElementById('modeToggle');
+      const lblRaw        = document.getElementById('lblRaw');
+      const lblReadable   = document.getElementById('lblReadable');
+
+      const SYSTEM_CLASS = {
+        1: 'Class 1', 2: 'Class 2', 3: 'Class 3',
+        4: 'Class 4', 5: 'Class 5', 6: 'Class 6',
+        7: 'HighSec', 8: 'LowSec', 9: 'NullSec'
+      };
+
+      function fmtVal(key, val, readable) {
+        if (val == null) return '—';
+        if (!readable) return val;
+        if (key === 'targetSystemClass') return SYSTEM_CLASS[val] ?? String(val);
+        if (key === 'maxStableTime') {
+          const h = val / 60;
+          return (Number.isInteger(h) ? h : h.toFixed(1)) + 'h';
+        }
+        if (key === 'maxStableMass' || key === 'massRegeneration' || key === 'maxJumpMass') {
+          return String(val).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' kg';
+        }
+        return val;
+      }
 
       function render() {
         const q = searchInput.value.trim().toUpperCase();
@@ -111,25 +143,31 @@
         });
       }
 
-      function openModal(wh) {
-        modalName.textContent = wh.name;
+      function renderModal() {
+        if (!currentWh) return;
+        const readable = modeToggle.checked;
+        modalName.textContent = currentWh.name;
 
         const rows = [
-          ['',     'typeID',             wh.typeID],
-          ['1381', 'targetSystemClass',  wh.targetSystemClass],
-          ['1382', 'maxStableTime',      wh.maxStableTime],
-          ['1383', 'maxStableMass',      wh.maxStableMass],
-          ['1384', 'massRegeneration',   wh.massRegeneration],
-          ['1385', 'maxJumpMass',        wh.maxJumpMass],
-          ['1457', 'targetDistribution', wh.targetDistribution],
+          ['',     'typeID',             currentWh.typeID],
+          ['1381', 'targetSystemClass',  currentWh.targetSystemClass],
+          ['1382', 'maxStableTime',      currentWh.maxStableTime],
+          ['1383', 'maxStableMass',      currentWh.maxStableMass],
+          ['1384', 'massRegeneration',   currentWh.massRegeneration],
+          ['1385', 'maxJumpMass',        currentWh.maxJumpMass],
+          ['1457', 'targetDistribution', currentWh.targetDistribution],
         ];
 
         modalAttrs.innerHTML = rows.map(([id, k, v]) => `
           <span class="attr-id">${id}</span>
           <span class="attr-key">${k}</span>
-          <span class="attr-val">${v != null ? v : '—'}</span>
+          <span class="attr-val">${fmtVal(k, v, readable)}</span>
         `).join('');
+      }
 
+      function openModal(wh) {
+        currentWh = wh;
+        renderModal();
         overlay.classList.add('open');
       }
 
@@ -137,6 +175,22 @@
         overlay.classList.remove('open');
         setTimeout(() => searchInput.focus(), 50);
       }
+
+      // Toggle mode
+      function updateToggleLabels() {
+        lblRaw.classList.toggle('active', !modeToggle.checked);
+        lblReadable.classList.toggle('active', modeToggle.checked);
+      }
+
+      function onToggle() {
+        updateToggleLabels();
+        if (overlay.classList.contains('open')) renderModal();
+      }
+
+      modeToggle.addEventListener('change', onToggle);
+      lblRaw.addEventListener('click', () => { modeToggle.checked = false; onToggle(); });
+      lblReadable.addEventListener('click', () => { modeToggle.checked = true; onToggle(); });
+      updateToggleLabels();
 
       document.getElementById('modalClose').addEventListener('click', closeModal);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
@@ -154,7 +208,6 @@
       // Clicking anywhere in the search display (including brand) focuses the input
       searchDisplay.addEventListener('click', () => searchInput.focus());
 
-      // Keep search always focused when modal is not open
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;
         searchHint.style.display = searchInput.value ? 'none' : '';
