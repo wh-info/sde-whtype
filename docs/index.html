@@ -407,6 +407,8 @@
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+      searchInput.addEventListener('input', render);
+
       // Load data
       fetch('data/wormholes.json')
         .then(r => r.json())
