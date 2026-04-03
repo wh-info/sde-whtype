@@ -143,14 +143,6 @@
       searchDisplay.addEventListener('click', () => searchInput.focus());
 
       // Keep search always focused when modal is not open
-      searchInput.addEventListener('blur', () => {
-        setTimeout(() => {
-          if (!overlay.classList.contains('open')) {
-            searchInput.focus();
-          }
-        }, 150);
-      });
-
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;
         searchHint.style.display = searchInput.value ? 'none' : '';

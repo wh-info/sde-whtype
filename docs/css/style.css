@@ -2,7 +2,7 @@
   --bg:        #0a0e10;
   --surface:   #0c1c1c;
   --border:    #0f2e2e;
-  --text:      #6dd4d4;
+  --text:      #8de0e0;
   --text-dim:  #1f5555;
   --accent:    #00c8c8;
   --highlight: #e8d44d;
@@ -108,6 +108,7 @@ body {
   font-weight: 400;
   font-size: 0.85em;
   letter-spacing: 0.02em;
+  user-select: none;
 }
 
 .search-hidden {
