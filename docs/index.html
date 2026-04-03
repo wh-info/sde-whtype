@@ -188,37 +188,37 @@
     .modal-close:hover { color: var(--text); }
 
     .modal-name {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--highlight);
       letter-spacing: 0.1em;
-      margin-bottom: 0.2rem;
-    }
-
-    .modal-id {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
       margin-bottom: 1.25rem;
     }
 
     .modal-attrs {
       display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.45rem 1.25rem;
+      grid-template-columns: auto auto 1fr;
+      gap: 0.5rem 0.9rem;
+      align-items: baseline;
+    }
+
+    .attr-id {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      opacity: 0.7;
     }
 
     .attr-key {
-      font-size: 0.68rem;
+      font-size: 0.85rem;
       color: var(--text-dim);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       white-space: nowrap;
-      padding-top: 0.05em;
     }
 
     .attr-val {
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       color: var(--text);
       font-variant-numeric: tabular-nums;
     }
@@ -297,7 +297,6 @@
     <div class="modal" id="modal">
       <button class="modal-close" id="modalClose" title="Close">✕</button>
       <div class="modal-name" id="modalName"></div>
-      <div class="modal-id" id="modalId"></div>
       <div class="modal-attrs" id="modalAttrs"></div>
     </div>
   </div>
@@ -322,7 +321,6 @@
       const overlay     = document.getElementById('overlay');
       const metaEl      = document.getElementById('meta');
       const modalName   = document.getElementById('modalName');
-      const modalId     = document.getElementById('modalId');
       const modalAttrs  = document.getElementById('modalAttrs');
 
 
@@ -364,19 +362,19 @@
 
       function openModal(wh) {
         modalName.textContent = wh.name;
-        modalId.textContent = '';
 
         const rows = [
-          ['typeID',              wh.typeID],
-          ['targetSystemClass',   wh.targetSystemClass],
-          ['maxStableTime',       wh.maxStableTime],
-          ['maxStableMass',       wh.maxStableMass],
-          ['maxJumpMass',         wh.maxJumpMass],
-          ['massRegeneration',    wh.massRegeneration],
-          ['targetDistribution',  wh.targetDistribution],
+          ['',     'typeID',             wh.typeID],
+          ['1381', 'targetSystemClass',  wh.targetSystemClass],
+          ['1382', 'maxStableTime',      wh.maxStableTime],
+          ['1383', 'maxStableMass',      wh.maxStableMass],
+          ['1385', 'maxJumpMass',        wh.maxJumpMass],
+          ['1384', 'massRegeneration',   wh.massRegeneration],
+          ['1457', 'targetDistribution', wh.targetDistribution],
         ];
 
-        modalAttrs.innerHTML = rows.map(([k, v]) => `
+        modalAttrs.innerHTML = rows.map(([id, k, v]) => `
+          <span class="attr-id">${id}</span>
           <span class="attr-key">${k}</span>
           <span class="attr-val">${v != null ? v : '—'}</span>
         `).join('');
@@ -390,7 +388,16 @@
 
       document.getElementById('modalClose').addEventListener('click', closeModal);
       overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Enter' && !overlay.classList.contains('open')) {
+          const items = resultsEl.querySelectorAll('.result-item');
+          if (items.length === 1) {
+            const wh = wormholes.find(w => w.name === items[0].dataset.name);
+            if (wh) openModal(wh);
+          }
+        }
+      });
 
       searchInput.addEventListener('input', render);
 
