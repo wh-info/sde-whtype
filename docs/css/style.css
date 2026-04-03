@@ -337,9 +337,8 @@ footer a:hover { border-bottom-color: var(--text-dim); }
   width: 2rem;
   height: 0.85rem;
   background: var(--surface-dark);
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent);
   position: relative;
-  transition: border-color 0.15s;
 }
 
 .toggle-thumb {
@@ -348,14 +347,21 @@ footer a:hover { border-bottom-color: var(--text-dim); }
   left: 1px;
   width: calc(50% - 2px);
   bottom: 1px;
-  background: var(--text-dim);
-  transition: left 0.15s, background 0.15s;
+  background: var(--accent);
+  transition: left 0.15s;
 }
 
-#modeToggle:checked + .toggle-track { border-color: var(--accent); }
 #modeToggle:checked + .toggle-track .toggle-thumb {
   left: calc(50% + 1px);
-  background: var(--accent);
+}
+
+.results-count {
+  padding: 0.35rem 1rem;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-align: right;
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.04em;
 }
 
 @media (max-width: 500px) {

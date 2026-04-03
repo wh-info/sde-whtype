@@ -88,9 +88,14 @@
       const lblReadable   = document.getElementById('lblReadable');
 
       const SYSTEM_CLASS = {
-        1: 'Class 1', 2: 'Class 2', 3: 'Class 3',
-        4: 'Class 4', 5: 'Class 5', 6: 'Class 6',
-        7: 'HighSec', 8: 'LowSec', 9: 'NullSec'
+        '-1': 'Pochven',
+        1: 'Class 1',  2: 'Class 2',  3: 'Class 3',
+        4: 'Class 4',  5: 'Class 5',  6: 'Class 6',
+        7: 'HighSec',  8: 'LowSec',   9: 'NullSec',
+        12: 'Thera',   13: 'Class 13',
+        14: 'Sentinel MZ',       15: 'Liberated Barbican',
+        16: 'Sanctified Vidette', 17: 'Conflux Eyrie',
+        18: 'Azdaja Redoubt',    25: 'Pochven',
       };
 
       function fmtVal(key, val, readable) {
@@ -126,14 +131,14 @@
           return;
         }
 
-        statsEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''}`;
+        statsEl.textContent = '';
         resultsEl.classList.add('visible');
         resultsEl.innerHTML = filtered.map(w => `
           <div class="result-item" data-name="${w.name}">
             <span class="result-name">${w.name}</span>
             <span class="result-typeid">${w.typeID != null ? w.typeID : '—'}</span>
           </div>
-        `).join('');
+        `).join('') + `<div class="results-count">${filtered.length} result${filtered.length !== 1 ? 's' : ''}</div>`;
 
         resultsEl.querySelectorAll('.result-item').forEach(el => {
           el.addEventListener('click', () => {
