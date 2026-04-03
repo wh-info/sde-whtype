@@ -164,10 +164,12 @@
           meta = data.meta;
           wormholes = data.wormholes;
 
-          const date = new Date(meta.generatedAt).toLocaleDateString('en-US', {
-            year: 'numeric', month: 'short', day: 'numeric'
-          });
-          metaEl.innerHTML = `SDE Build ${meta.sdeBuild} · ${date} · ${meta.count} types · <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
+          const dateFmt = { year: 'numeric', month: 'short', day: 'numeric' };
+          const checkedDate = new Date(meta.generatedAt).toLocaleDateString('en-US', dateFmt);
+          const buildDate = meta.sdeBuildDate
+            ? ' (' + new Date(meta.sdeBuildDate).toLocaleDateString('en-US', dateFmt) + ')'
+            : '';
+          metaEl.innerHTML = `SDE Build ${meta.sdeBuild}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
 
           const checkBtn    = document.getElementById('checkBtn');
           const checkStatus = document.getElementById('checkStatus');

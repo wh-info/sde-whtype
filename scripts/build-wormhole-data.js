@@ -160,13 +160,16 @@ function main() {
   wormholes.sort((a, b) => a.name.localeCompare(b.name));
 
   // 4. Build output with metadata
-  const buildNumber = fs.readFileSync(
+  const versionLines = fs.readFileSync(
     path.join(__dirname, '..', 'sde-version.txt'), 'utf-8'
-  ).trim();
+  ).trim().split('\n');
+  const buildNumber = versionLines[0];
+  const buildDate = versionLines[1] || null;
 
   const output = {
     meta: {
       sdeBuild: parseInt(buildNumber, 10),
+      sdeBuildDate: buildDate,
       generatedAt: new Date().toISOString(),
       count: wormholes.length,
       warnings: warnings.length > 0 ? warnings : undefined,
