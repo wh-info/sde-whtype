@@ -325,22 +325,6 @@
       const modalId     = document.getElementById('modalId');
       const modalAttrs  = document.getElementById('modalAttrs');
 
-      const CLASS_LABELS = {
-        1: 'Class 1', 2: 'Class 2', 3: 'Class 3', 4: 'Class 4',
-        5: 'Class 5', 6: 'Class 6', 7: 'Highsec', 8: 'Lowsec',
-        9: 'Nullsec', 12: 'Thera', 13: 'Drifter WH',
-        14: 'Class 14', 15: 'Class 15', 16: 'Class 16',
-        17: 'Class 17', 18: 'Class 18'
-      };
-
-      function classLabel(n) {
-        return n != null ? (CLASS_LABELS[n] || `Class ${n}`) : '—';
-      }
-
-      function fmt(v, suffix) {
-        if (v == null) return '—';
-        return suffix ? v.toLocaleString() + ' ' + suffix : String(v);
-      }
 
       function render() {
         const q = searchInput.value.trim().toUpperCase();
@@ -366,7 +350,7 @@
         resultsEl.innerHTML = filtered.map(w => `
           <div class="result-item" data-name="${w.name}">
             <span class="result-name">${w.name}</span>
-            <span class="result-hint">${classLabel(w.targetSystemClass)}</span>
+            <span class="result-hint">${w.targetSystemClass != null ? w.targetSystemClass : '—'}</span>
           </div>
         `).join('');
 
@@ -380,20 +364,21 @@
 
       function openModal(wh) {
         modalName.textContent = wh.name;
-        modalId.textContent = `typeID ${wh.typeID != null ? wh.typeID : '—'}`;
+        modalId.textContent = '';
 
         const rows = [
-          ['Leads to',        classLabel(wh.targetSystemClass)],
-          ['Max stable time', fmt(wh.maxStableTime, 'min')],
-          ['Max stable mass', fmt(wh.maxStableMass, 'kg')],
-          ['Max jump mass',   fmt(wh.maxJumpMass, 'kg')],
-          ['Mass regen',      fmt(wh.massRegeneration, 'kg')],
-          ['Distribution',    fmt(wh.targetDistribution)],
+          ['typeID',              wh.typeID],
+          ['targetSystemClass',   wh.targetSystemClass],
+          ['maxStableTime',       wh.maxStableTime],
+          ['maxStableMass',       wh.maxStableMass],
+          ['maxJumpMass',         wh.maxJumpMass],
+          ['massRegeneration',    wh.massRegeneration],
+          ['targetDistribution',  wh.targetDistribution],
         ];
 
         modalAttrs.innerHTML = rows.map(([k, v]) => `
           <span class="attr-key">${k}</span>
-          <span class="attr-val">${v}</span>
+          <span class="attr-val">${v != null ? v : '—'}</span>
         `).join('');
 
         overlay.classList.add('open');
