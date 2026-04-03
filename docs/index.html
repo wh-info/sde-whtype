@@ -88,6 +88,7 @@
       const lblReadable   = document.getElementById('lblReadable');
       const brandEl       = document.querySelector('.search-brand');
       const viewToggle    = document.querySelector('.view-toggle');
+      const searchWrapEl  = document.querySelector('.search-wrap');
 
       const SYSTEM_CLASS = {
         '-1': 'Pochven',
@@ -153,14 +154,15 @@
         });
       }
 
-      // Push stats-line below the absolute-positioned results dropdown
+      // Float stats-line below the results dropdown without affecting layout
       function updateStatsPosition() {
-        statsEl.style.marginTop = '';
-        if (resultsEl.classList.contains('visible')) {
+        if (resultsEl.classList.contains('visible') && statsEl.textContent) {
+          const wrapRect    = searchWrapEl.getBoundingClientRect();
           const resultsBottom = resultsEl.getBoundingClientRect().bottom;
-          const statsTop = statsEl.getBoundingClientRect().top;
-          const needed = resultsBottom - statsTop + 10;
-          if (needed > 0) statsEl.style.marginTop = needed + 'px';
+          statsEl.style.top = (resultsBottom - wrapRect.top + 10) + 'px';
+          statsEl.style.display = 'block';
+        } else {
+          statsEl.style.display = 'none';
         }
       }
 

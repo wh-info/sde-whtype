@@ -49,6 +49,7 @@ body {
 .search-wrap {
   width: 100%;
   max-width: 460px;
+  position: relative;
 }
 
 /* Outer row: brand + separator + input (flex, single border) */
@@ -177,13 +178,12 @@ body {
 }
 
 .stats-line {
-  width: 100%;
-  margin-top: 0.5rem;
+  position: absolute;
+  right: 0;
   font-size: 0.7rem;
   color: var(--text-dim);
   letter-spacing: 0.04em;
-  min-height: 1.1em;
-  text-align: right;
+  display: none;
 }
 
 /* ── Overlay ── */
