@@ -260,14 +260,14 @@
           resultsEl.innerHTML = '';
           updateStatsPosition();
         }
+        // Focus search input on any click except footer and modal overlay
+        if (!e.target.closest('footer') && !e.target.closest('.overlay')) {
+          searchInput.focus();
+        }
       });
 
       searchInput.addEventListener('keydown', e => {
         if (e.key === ' ') e.preventDefault();
-      });
-
-      searchInput.addEventListener('focus', () => {
-        if (searchInput.value) render();
       });
 
       searchInput.addEventListener('input', () => {
