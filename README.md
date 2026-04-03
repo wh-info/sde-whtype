@@ -1,2 +1,2 @@
 # sde-whtype
-eve sde whtype info
+eve sde wormhole type info
