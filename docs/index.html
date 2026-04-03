@@ -159,7 +159,7 @@
         if (resultsEl.classList.contains('visible')) {
           const resultsBottom = resultsEl.getBoundingClientRect().bottom;
           const statsTop = statsEl.getBoundingClientRect().top;
-          const needed = resultsBottom - statsTop + 4;
+          const needed = resultsBottom - statsTop + 5;
           if (needed > 0) statsEl.style.marginTop = needed + 'px';
         }
       }

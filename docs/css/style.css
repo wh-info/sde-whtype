@@ -317,7 +317,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  margin-top: 0.25rem;
+  margin-top: 0.7rem;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
 }
