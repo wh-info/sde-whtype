@@ -2,7 +2,7 @@
   --bg:        #0a0e10;
   --surface:   #0c1c1c;
   --border:    #0f2e2e;
-  --text:      #4fc8c8;
+  --text:      #6dd4d4;
   --text-dim:  #1f5555;
   --accent:    #00c8c8;
   --highlight: #e8d44d;
@@ -38,7 +38,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  padding-bottom: 22vh;
 }
 
 .blink-cursor { animation: blink 1s step-end infinite; }
