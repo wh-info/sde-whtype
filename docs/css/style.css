@@ -203,7 +203,7 @@ body {
   background: var(--surface-dark);
   border: 1px solid var(--border);
   width: 100%;
-  max-width: 420px;
+  max-width: 520px;
   margin: 1rem;
   padding: 1.5rem;
   position: relative;
@@ -239,8 +239,9 @@ body {
   gap: 0.75rem 0.9rem;
   align-items: baseline;
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 1px dotted var(--border);
   padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
 .attr-id {
@@ -284,11 +285,6 @@ footer a {
 footer a:hover { border-bottom-color: var(--text-dim); }
 
 /* ── View toggle ── */
-.modal-sep {
-  border: none;
-  border-top: 1px dotted var(--border);
-  margin: 1.5rem 0 1.1rem;
-}
 
 .view-toggle {
   display: flex;
