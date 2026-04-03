@@ -48,27 +48,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2.5rem 1.5rem 1.5rem;
+      padding: 1.5rem;
     }
-
-    .site-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-    .site-title a { color: inherit; text-decoration: none; }
 
     .blink-cursor { animation: blink 1s step-end infinite; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-    .subtitle {
-      color: var(--text-dim);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 2.5rem;
-    }
 
     /* ── Search ── */
     .search-wrap {
@@ -76,21 +60,70 @@
       max-width: 460px;
     }
 
-    .search-box {
+    .search-display {
       width: 100%;
-      padding: 0.65rem 1rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 3px;
-      color: var(--text);
-      font-family: inherit;
       font-size: 0.95rem;
       letter-spacing: 0.04em;
-      outline: none;
+      cursor: text;
+      display: flex;
+      align-items: stretch;
       transition: border-color 0.15s;
+      overflow: hidden;
+      position: relative;
     }
-    .search-box:focus { border-color: var(--accent); }
-    .search-box::placeholder { color: var(--text-dim); }
+    .search-display:focus-within { border-color: var(--accent); }
+
+    .search-brand {
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .search-brand strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .search-sep {
+      width: 1px;
+      background: var(--border);
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+
+    .search-input-area {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      color: var(--accent);
+      font-weight: 700;
+      min-width: 0;
+    }
+
+    .search-typed { color: var(--accent); }
+
+    .search-hint {
+      color: var(--text-dim);
+      font-weight: 400;
+      font-size: 0.85em;
+      letter-spacing: 0.02em;
+    }
+
+    .search-hidden {
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      border: none;
+      outline: none;
+    }
 
     /* ── Results list ── */
     .results {
@@ -193,6 +226,7 @@
       color: var(--highlight);
       letter-spacing: 0.1em;
       margin-bottom: 1.25rem;
+      text-align: center;
     }
 
     .modal-attrs {
@@ -280,12 +314,13 @@
 <body>
 
   <div class="main">
-    <div class="site-title"><a href="https://whtype.info">wh</a>type.info / sde<span class="blink-cursor">_</span></div>
-    <div class="subtitle">EVE WORMHOLE TYPES · CCP STATIC DATA EXPORT</div>
-
     <div class="search-wrap">
-      <input type="text" id="search" class="search-box"
-        placeholder="Search wormhole type (A009, C247...)" autofocus>
+      <div class="search-display" id="searchDisplay">
+        <span class="search-brand">sde.<strong>wh</strong>type.info</span>
+        <span class="search-sep"></span>
+        <span class="search-input-area"><span class="search-typed" id="searchTyped"></span><span class="blink-cursor">_</span><span class="search-hint" id="searchHint">(A009, C247...)</span></span>
+        <input type="text" id="search" class="search-hidden" autofocus autocomplete="off" spellcheck="false">
+      </div>
     </div>
 
     <div class="results" id="results"></div>
@@ -315,7 +350,9 @@
       let wormholes = [];
       let meta = {};
 
-      const searchInput = document.getElementById('search');
+      const searchInput  = document.getElementById('search');
+      const searchTyped  = document.getElementById('searchTyped');
+      const searchDisplay = document.getElementById('searchDisplay');
       const resultsEl   = document.getElementById('results');
       const statsEl     = document.getElementById('stats');
       const overlay     = document.getElementById('overlay');
@@ -399,7 +436,15 @@
         }
       });
 
-      searchInput.addEventListener('input', render);
+      searchDisplay.addEventListener('click', () => searchInput.focus());
+
+      const searchHint = document.getElementById('searchHint');
+
+      searchInput.addEventListener('input', () => {
+        searchTyped.textContent = searchInput.value;
+        searchHint.style.display = searchInput.value ? 'none' : '';
+        render();
+      });
 
       // Load data
       fetch('data/wormholes.json')
