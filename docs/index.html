@@ -209,6 +209,19 @@
       lblReadable.addEventListener('click', () => { modeToggle.checked = true; onToggle(); });
       updateToggleLabels();
 
+      function getNextCheckIn() {
+        const now = new Date();
+        let next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 14, 0, 0, 0));
+        for (let i = 0; i < 32; i++) {
+          if (next > now && next.getUTCDate() % 2 === 1) break;
+          next = new Date(next.getTime() + 24 * 60 * 60 * 1000);
+          next.setUTCHours(14, 0, 0, 0);
+        }
+        const h = Math.floor((next - now) / 36e5);
+        const m = Math.round(((next - now) % 36e5) / 60000);
+        return h === 0 ? `${m}min` : m === 0 ? `${h}h` : `${h}h ${m}min`;
+      }
+
       async function triggerSdeCheck() {
         resultsEl.classList.add('visible');
         resultsEl.innerHTML = '<div class="no-results">Checking SDE version...</div>';
@@ -216,7 +229,7 @@
           const res = await fetch('https://developers.eveonline.com/static-data/tranquility/latest.jsonl');
           const latest = JSON.parse(await res.text());
           if (latest.buildNumber > meta.sdeBuild) {
-            resultsEl.innerHTML = `<div class="no-results" style="color:var(--highlight)">New build available: ${latest.buildNumber} &mdash; current: ${meta.sdeBuild}</div>`;
+            resultsEl.innerHTML = `<div class="no-results" style="color:var(--highlight)">New build available: ${latest.buildNumber} &mdash; current: ${meta.sdeBuild}</div><div class="no-results" style="color:var(--text-mid);margin-top:0.25rem">Next auto-check in: ${getNextCheckIn()}</div>`;
           } else {
             resultsEl.innerHTML = `<div class="no-results" style="color:var(--accent)">Up to date &mdash; Build ${meta.sdeBuild}</div>`;
           }
@@ -263,7 +276,10 @@
       });
 
       searchInput.addEventListener('keydown', e => {
-        if (e.key === ' ') e.preventDefault();
+        if (e.key === ' ' || e.key === 'ArrowLeft' || e.key === 'ArrowRight' ||
+            e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Home' || e.key === 'End') {
+          e.preventDefault();
+        }
       });
 
       searchInput.addEventListener('focus', () => {
@@ -273,6 +289,8 @@
       searchInput.addEventListener('input', () => {
         searchTyped.textContent = searchInput.value;
         searchHint.style.display = searchInput.value ? 'none' : '';
+        const len = searchInput.value.length;
+        searchInput.setSelectionRange(len, len);
         render();
       });
 
