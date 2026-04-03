@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:         #0a0e10;
-      --surface:    #0c1c1c;
-      --border:     #0f2e2e;
-      --text:       #4fc8c8;
-      --text-dim:   #1f5555;
-      --accent:     #00c8c8;
-      --highlight:  #e8d44d;
+      --bg:        #0a0e10;
+      --surface:   #0c1c1c;
+      --border:    #0f2e2e;
+      --text:      #4fc8c8;
+      --text-dim:  #1f5555;
+      --accent:    #00c8c8;
+      --highlight: #e8d44d;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,156 +34,203 @@
       font-family: 'Roboto Mono', 'Courier New', monospace;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
-      padding: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
       font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    header { margin-bottom: 1.5rem; }
+    /* ── Main centered area ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
 
     .site-title {
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      margin-bottom: 0.25rem;
       color: var(--accent);
+      margin-bottom: 0.3rem;
     }
+    .site-title a { color: inherit; text-decoration: none; }
 
-    .site-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .site-title .blink-cursor {
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    .blink-cursor { animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
     .subtitle {
       color: var(--text-dim);
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 2.5rem;
     }
 
-    .controls {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
+    /* ── Search ── */
+    .search-wrap {
+      width: 100%;
+      max-width: 460px;
     }
 
     .search-box {
-      flex: 1;
-      min-width: 200px;
-      padding: 0.45rem 0.75rem;
+      width: 100%;
+      padding: 0.65rem 1rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 3px;
       color: var(--text);
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
       outline: none;
+      transition: border-color 0.15s;
     }
-
     .search-box:focus { border-color: var(--accent); }
     .search-box::placeholder { color: var(--text-dim); }
 
-    .filter-select {
-      padding: 0.45rem 0.75rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.9rem;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .filter-select:focus { border-color: var(--accent); }
-    .filter-select option { background: var(--surface); }
-
-    .stats {
-      color: var(--text-dim);
-      font-size: 0.78rem;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.03em;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-    }
-
-    table {
+    /* ── Results list ── */
+    .results {
       width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
+      max-width: 460px;
+      margin-top: 0.4rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      display: none;
     }
+    .results.visible { display: block; }
 
-    th {
-      background: var(--surface);
-      text-align: left;
-      padding: 0.55rem 0.75rem;
-      font-weight: 700;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
+    .result-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      user-select: none;
-    }
-
-    th:hover { color: var(--text); }
-    th.sorted { color: var(--accent); }
-    th .arrow { margin-left: 0.3em; font-size: 0.65rem; }
-
-    td {
-      padding: 0.45rem 0.75rem;
       border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-      color: var(--text);
+      transition: background 0.1s;
+      gap: 1rem;
     }
+    .result-item:last-child { border-bottom: none; }
+    .result-item:hover { background: rgba(0, 200, 200, 0.06); }
+    .result-item:hover .result-name { color: var(--highlight); }
 
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(0, 200, 200, 0.04); }
-
-    .wh-name {
+    .result-name {
       font-weight: 700;
       color: var(--highlight);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      transition: color 0.1s;
     }
 
-    .mass-value { font-variant-numeric: tabular-nums; }
+    .result-hint {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
 
     .no-results {
+      padding: 1rem;
       text-align: center;
-      padding: 2rem;
       color: var(--text-dim);
+      font-size: 0.82rem;
     }
 
-    .loading {
-      text-align: center;
-      padding: 3rem;
+    .stats-line {
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
       color: var(--text-dim);
+      letter-spacing: 0.04em;
+      min-height: 1.1em;
     }
 
+    /* ── Overlay ── */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.open { display: flex; }
+
+    /* ── Modal ── */
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      width: 100%;
+      max-width: 420px;
+      margin: 1rem;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 0.15rem 0.35rem;
+      line-height: 1;
+      border-radius: 2px;
+    }
+    .modal-close:hover { color: var(--text); }
+
+    .modal-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--highlight);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2rem;
+    }
+
+    .modal-id {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-attrs {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.45rem 1.25rem;
+    }
+
+    .attr-key {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-top: 0.05em;
+    }
+
+    .attr-val {
+      font-size: 0.82rem;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Footer ── */
     footer {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
+      padding: 1rem 1.5rem;
       border-top: 1px solid var(--border);
       color: var(--text-dim);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 0.02em;
+      text-align: center;
     }
 
     footer a { color: var(--accent); text-decoration: none; }
@@ -193,86 +240,69 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
     }
 
     .update-btn {
-      display: inline-block;
-      padding: 0.3rem 0.65rem;
-      background: var(--surface);
+      padding: 0.25rem 0.6rem;
+      background: transparent;
       border: 1px solid var(--border);
       border-radius: 3px;
       color: var(--accent);
       font-family: inherit;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       letter-spacing: 0.05em;
       cursor: pointer;
     }
-
     .update-btn:hover { border-color: var(--accent); color: var(--text); }
     .update-btn:disabled { opacity: 0.4; cursor: default; }
 
-    .update-status {
-      font-size: 0.72rem;
-      color: var(--text-dim);
-    }
+    .update-status { font-size: 0.68rem; color: var(--text-dim); }
 
     .spinner {
       display: inline-block;
-      width: 11px;
-      height: 11px;
+      width: 10px; height: 10px;
       border: 2px solid var(--border);
       border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.6s linear infinite;
       vertical-align: middle;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    @media (max-width: 600px) {
-      body { padding: 1rem; }
-      .controls { flex-direction: column; }
-      th, td { padding: 0.35rem 0.5rem; font-size: 0.75rem; }
+    @media (max-width: 500px) {
+      .main { padding: 2rem 1rem 1rem; }
+      .modal { padding: 1.25rem; }
+      .modal-name { font-size: 1.25rem; }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <div class="main">
     <div class="site-title"><a href="https://whtype.info">wh</a>type.info / sde<span class="blink-cursor">_</span></div>
     <div class="subtitle">EVE WORMHOLE TYPES · CCP STATIC DATA EXPORT</div>
-  </header>
 
-  <div class="controls">
-    <input type="text" id="search" class="search-box"
-      placeholder="Search by name (e.g. C247, R943, A009)..." autofocus>
-    <select id="classFilter" class="filter-select">
-      <option value="">All targetSystemClass</option>
-    </select>
+    <div class="search-wrap">
+      <input type="text" id="search" class="search-box"
+        placeholder="Search wormhole type (A009, C247...)" autofocus>
+    </div>
+
+    <div class="results" id="results"></div>
+    <div class="stats-line" id="stats"></div>
   </div>
 
-  <div id="stats" class="stats"></div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th data-key="name">Name <span class="arrow"></span></th>
-          <th data-key="typeID">typeID <span class="arrow"></span></th>
-          <th data-key="targetSystemClass">targetSystemClass <span class="arrow"></span></th>
-          <th data-key="maxStableTime">maxStableTime <span class="arrow"></span></th>
-          <th data-key="maxStableMass">maxStableMass <span class="arrow"></span></th>
-          <th data-key="maxJumpMass">maxJumpMass <span class="arrow"></span></th>
-          <th data-key="massRegeneration">massRegeneration <span class="arrow"></span></th>
-          <th data-key="targetDistribution">targetDistribution <span class="arrow"></span></th>
-        </tr>
-      </thead>
-      <tbody id="tbody">
-        <tr><td colspan="8" class="loading">Loading wormhole data...</td></tr>
-      </tbody>
-    </table>
+  <!-- Modal overlay -->
+  <div class="overlay" id="overlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose" title="Close">✕</button>
+      <div class="modal-name" id="modalName"></div>
+      <div class="modal-id" id="modalId"></div>
+      <div class="modal-attrs" id="modalAttrs"></div>
+    </div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <div id="meta"></div>
     <div class="update-check">
@@ -285,148 +315,137 @@
     (function () {
       let wormholes = [];
       let meta = {};
-      let sortKey = 'name';
-      let sortAsc = true;
 
-      const tbody = document.getElementById('tbody');
       const searchInput = document.getElementById('search');
-      const classFilter = document.getElementById('classFilter');
-      const statsEl = document.getElementById('stats');
-      const metaEl = document.getElementById('meta');
+      const resultsEl   = document.getElementById('results');
+      const statsEl     = document.getElementById('stats');
+      const overlay     = document.getElementById('overlay');
+      const metaEl      = document.getElementById('meta');
+      const modalName   = document.getElementById('modalName');
+      const modalId     = document.getElementById('modalId');
+      const modalAttrs  = document.getElementById('modalAttrs');
 
-      function val(v) {
-        return v != null ? v : '—';
+      const CLASS_LABELS = {
+        1: 'Class 1', 2: 'Class 2', 3: 'Class 3', 4: 'Class 4',
+        5: 'Class 5', 6: 'Class 6', 7: 'Highsec', 8: 'Lowsec',
+        9: 'Nullsec', 12: 'Thera', 13: 'Drifter WH',
+        14: 'Class 14', 15: 'Class 15', 16: 'Class 16',
+        17: 'Class 17', 18: 'Class 18'
+      };
+
+      function classLabel(n) {
+        return n != null ? (CLASS_LABELS[n] || `Class ${n}`) : '—';
       }
 
-      function getFiltered() {
-        const q = searchInput.value.trim().toUpperCase();
-        const cls = classFilter.value;
-        return wormholes.filter((w) => {
-          if (q && !w.name.toUpperCase().includes(q)) return false;
-          if (cls && String(w.targetSystemClass) !== cls) return false;
-          return true;
-        });
-      }
-
-      function getSorted(list) {
-        return [...list].sort((a, b) => {
-          let va = a[sortKey];
-          let vb = b[sortKey];
-          if (va == null) va = sortAsc ? Infinity : -Infinity;
-          if (vb == null) vb = sortAsc ? Infinity : -Infinity;
-          if (typeof va === 'string') {
-            return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
-          }
-          return sortAsc ? va - vb : vb - va;
-        });
+      function fmt(v, suffix) {
+        if (v == null) return '—';
+        return suffix ? v.toLocaleString() + ' ' + suffix : String(v);
       }
 
       function render() {
-        const filtered = getSorted(getFiltered());
-        statsEl.textContent = `Showing ${filtered.length} of ${wormholes.length} wormhole types`;
+        const q = searchInput.value.trim().toUpperCase();
 
-        if (filtered.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="8" class="no-results">No matching wormhole types found.</td></tr>';
+        if (!q) {
+          resultsEl.classList.remove('visible');
+          resultsEl.innerHTML = '';
+          statsEl.textContent = wormholes.length ? `${wormholes.length} wormhole types loaded` : '';
           return;
         }
 
-        tbody.innerHTML = filtered.map((w) => `
-          <tr>
-            <td class="wh-name">${w.name}</td>
-            <td>${val(w.typeID)}</td>
-            <td>${val(w.targetSystemClass)}</td>
-            <td>${val(w.maxStableTime)}</td>
-            <td>${val(w.maxStableMass)}</td>
-            <td>${val(w.maxJumpMass)}</td>
-            <td>${val(w.massRegeneration)}</td>
-            <td>${val(w.targetDistribution)}</td>
-          </tr>
+        const filtered = wormholes.filter(w => w.name.toUpperCase().includes(q));
+
+        if (filtered.length === 0) {
+          resultsEl.classList.add('visible');
+          resultsEl.innerHTML = '<div class="no-results">No matching wormhole types</div>';
+          statsEl.textContent = '';
+          return;
+        }
+
+        statsEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''}`;
+        resultsEl.classList.add('visible');
+        resultsEl.innerHTML = filtered.map(w => `
+          <div class="result-item" data-name="${w.name}">
+            <span class="result-name">${w.name}</span>
+            <span class="result-hint">${classLabel(w.targetSystemClass)}</span>
+          </div>
         `).join('');
 
-        // Update sort indicators
-        document.querySelectorAll('th[data-key]').forEach((th) => {
-          const arrow = th.querySelector('.arrow');
-          if (th.dataset.key === sortKey) {
-            th.classList.add('sorted');
-            arrow.textContent = sortAsc ? '▲' : '▼';
-          } else {
-            th.classList.remove('sorted');
-            arrow.textContent = '';
-          }
+        resultsEl.querySelectorAll('.result-item').forEach(el => {
+          el.addEventListener('click', () => {
+            const wh = wormholes.find(w => w.name === el.dataset.name);
+            if (wh) openModal(wh);
+          });
         });
       }
 
-      // Event listeners
-      searchInput.addEventListener('input', render);
-      classFilter.addEventListener('change', render);
+      function openModal(wh) {
+        modalName.textContent = wh.name;
+        modalId.textContent = `typeID ${wh.typeID != null ? wh.typeID : '—'}`;
 
-      document.querySelectorAll('th[data-key]').forEach((th) => {
-        th.addEventListener('click', () => {
-          const key = th.dataset.key;
-          if (sortKey === key) {
-            sortAsc = !sortAsc;
-          } else {
-            sortKey = key;
-            sortAsc = true;
-          }
-          render();
-        });
-      });
+        const rows = [
+          ['Leads to',        classLabel(wh.targetSystemClass)],
+          ['Max stable time', fmt(wh.maxStableTime, 'min')],
+          ['Max stable mass', fmt(wh.maxStableMass, 'kg')],
+          ['Max jump mass',   fmt(wh.maxJumpMass, 'kg')],
+          ['Mass regen',      fmt(wh.massRegeneration, 'kg')],
+          ['Distribution',    fmt(wh.targetDistribution)],
+        ];
+
+        modalAttrs.innerHTML = rows.map(([k, v]) => `
+          <span class="attr-key">${k}</span>
+          <span class="attr-val">${v}</span>
+        `).join('');
+
+        overlay.classList.add('open');
+      }
+
+      function closeModal() {
+        overlay.classList.remove('open');
+      }
+
+      document.getElementById('modalClose').addEventListener('click', closeModal);
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
       // Load data
       fetch('data/wormholes.json')
-        .then((r) => r.json())
-        .then((data) => {
+        .then(r => r.json())
+        .then(data => {
           meta = data.meta;
           wormholes = data.wormholes;
 
-          // Populate class filter dropdown with raw values
-          const classes = [...new Set(wormholes.map((w) => w.targetSystemClass).filter((v) => v != null))];
-          classes.sort((a, b) => a - b);
-          for (const cls of classes) {
-            const opt = document.createElement('option');
-            opt.value = String(cls);
-            opt.textContent = cls;
-            classFilter.appendChild(opt);
-          }
-
-          // Show metadata in footer
           const date = new Date(meta.generatedAt).toLocaleDateString('en-US', {
             year: 'numeric', month: 'short', day: 'numeric'
           });
-          metaEl.innerHTML = `SDE Build ${meta.sdeBuild} · Updated ${date} · ${meta.count} types · Source: <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
+          metaEl.innerHTML = `SDE Build ${meta.sdeBuild} · ${date} · ${meta.count} types · <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">CCP Static Data Export</a>`;
 
-          render();
+          statsEl.textContent = `${wormholes.length} wormhole types loaded`;
 
-          // Set up SDE update check button
-          const checkBtn = document.getElementById('checkBtn');
+          const checkBtn    = document.getElementById('checkBtn');
           const checkStatus = document.getElementById('checkStatus');
 
           checkBtn.addEventListener('click', async () => {
             checkBtn.disabled = true;
             checkStatus.innerHTML = '<span class="spinner"></span> Checking...';
-
             try {
               const res = await fetch('https://developers.eveonline.com/static-data/tranquility/latest.jsonl');
               const latest = JSON.parse(await res.text());
-
               if (latest.buildNumber > meta.sdeBuild) {
-                checkStatus.textContent = `New SDE build available: ${latest.buildNumber} (current: ${meta.sdeBuild})`;
-                checkStatus.style.color = '#ffc83d';
+                checkStatus.textContent = `New build: ${latest.buildNumber} (current: ${meta.sdeBuild})`;
+                checkStatus.style.color = '#e8d44d';
               } else {
-                checkStatus.textContent = 'Using latest SDE';
+                checkStatus.textContent = 'Up to date';
                 checkStatus.style.color = '';
               }
             } catch {
-              checkStatus.textContent = 'Failed to check — try again later';
+              checkStatus.textContent = 'Check failed — try again later';
               checkStatus.style.color = '#f85149';
             }
-
             checkBtn.disabled = false;
           });
         })
         .catch(() => {
-          tbody.innerHTML = '<tr><td colspan="8" class="no-results">Failed to load wormhole data.</td></tr>';
+          statsEl.textContent = 'Failed to load wormhole data.';
         });
     })();
   </script>
