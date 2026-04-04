@@ -103,6 +103,7 @@ body {
   color: var(--accent);
   font-weight: 700;
   min-width: 0;
+  overflow: hidden; /* clip hint text on narrow viewports; dropdown is a sibling so unaffected */
 }
 
 .search-typed { color: var(--accent); }
@@ -114,6 +115,7 @@ body {
   letter-spacing: 0.02em;
   user-select: none;
   pointer-events: none;
+  white-space: nowrap; /* clip via parent overflow:hidden rather than wrap */
 }
 
 .search-hidden {
@@ -124,6 +126,7 @@ body {
   padding: 0;
   border: none;
   outline: none;
+  font-size: 16px; /* prevent iOS Safari from zooming on focus */
 }
 
 /* ── Results dropdown (absolute, below input area only) ── */
@@ -332,6 +335,54 @@ footer a:hover { border-bottom-color: var(--text-dim); }
 
 @media (max-width: 500px) {
   .main { padding: 2rem 1rem 1rem; }
-  .modal { padding: 1.25rem; }
+
+  /* Modal: tighter padding, prevent taller-than-viewport overflow */
+  .modal {
+    padding: 1.25rem;
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+  }
   .modal-name { font-size: 1.25rem; }
+
+  /* Larger tap targets for result rows (~42px height) */
+  .result-item { padding: 0.75rem 1rem; }
+
+  /* Close button: bigger tap area, repositioned slightly */
+  .modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.6rem 0.7rem;
+    font-size: 1.1rem;
+  }
+
+  /*
+   * Modal attribute grid: 3-column auto/auto/1fr breaks below ~420px because
+   * attr-key names like "targetSystemClass" are wide and white-space:nowrap.
+   * On mobile we hide the dogma attribute IDs and stack key above value so
+   * nothing overflows and values remain fully readable.
+   */
+  .modal-attrs {
+    grid-template-columns: 1fr;
+    row-gap: 0.15rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .attr-id { display: none; }
+  .attr-key {
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+    white-space: normal;
+  }
+  .attr-val { font-size: 0.9rem; }
+}
+
+/* Very narrow screens (320–360px): tighten the search bar so brand + input fit */
+@media (max-width: 360px) {
+  .search-brand {
+    font-size: 0.82rem;
+    padding: 0.65rem 0.7rem;
+    letter-spacing: 0.02em;
+  }
+  .search-input-area { padding: 0.65rem 0.65rem; }
+  .modal-name { font-size: 1.1rem; }
 }
