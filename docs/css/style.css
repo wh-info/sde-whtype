@@ -157,8 +157,8 @@ body {
   gap: 1rem;
 }
 .result-item:last-child { border-bottom: none; }
-.result-item:hover { background: rgba(0, 200, 200, 0.06); }
-.result-item:hover .result-name { color: var(--highlight); }
+.result-item:hover,
+.result-item.focused { background: rgba(0, 200, 200, 0.06); }
 
 .result-name {
   font-weight: 700;

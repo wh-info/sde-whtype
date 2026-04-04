@@ -15,8 +15,8 @@
   <meta property="og:description" content="Search for wormhole type information from CCP's Static Data Export.">
   <meta property="og:url" content="https://sde.whtype.info">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://sde.whtype.info/img/og-image.png">
 
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="a62cdb4a-dd4c-4f23-b8a0-4cacebccfd32"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -68,6 +68,7 @@
       let wormholes = [];
       let meta = {};
       let currentWh = null;
+      let focusedIndex = -1;
 
       const searchInput   = document.getElementById('search');
       const searchTyped   = document.getElementById('searchTyped');
@@ -110,6 +111,7 @@
       }
 
       function render() {
+        focusedIndex = -1;
         const q = searchInput.value.trim().toUpperCase();
 
         if (!q) {
@@ -146,6 +148,13 @@
             if (wh) openModal(wh);
           });
         });
+      }
+
+      function setFocused(idx) {
+        const items = resultsEl.querySelectorAll('.result-item');
+        items.forEach((el, i) => el.classList.toggle('focused', i === idx));
+        focusedIndex = idx;
+        if (idx >= 0 && items[idx]) items[idx].scrollIntoView({ block: 'nearest' });
       }
 
       // Float stats-line below the results dropdown without affecting layout
@@ -212,7 +221,7 @@
 
       function getNextCheckIn() {
         const now = new Date();
-        let next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 14, 0, 0, 0));
+        let next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 15, 0, 0, 0));
         for (let i = 0; i < 32; i++) {
           if (next > now && next.getUTCDate() % 2 === 1) break;
           next = new Date(next.getTime() + 24 * 60 * 60 * 1000);
@@ -257,8 +266,11 @@
         if (e.key === 'Enter' && !overlay.classList.contains('open')) {
           if (searchInput.value === 'vSDE') { triggerSdeCheck(); return; }
           const items = resultsEl.querySelectorAll('.result-item');
-          if (items.length === 1) {
-            const wh = wormholes.find(w => w.name === items[0].dataset.name);
+          const target = focusedIndex >= 0 ? items[focusedIndex]
+                       : items.length === 1  ? items[0]
+                       : null;
+          if (target) {
+            const wh = wormholes.find(w => w.name === target.dataset.name);
             if (wh) openModal(wh);
           }
         }
@@ -280,8 +292,19 @@
       });
 
       searchInput.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (!resultsEl.classList.contains('visible')) return;
+          const items = resultsEl.querySelectorAll('.result-item');
+          if (!items.length) return;
+          const next = e.key === 'ArrowDown'
+            ? Math.min(focusedIndex + 1, items.length - 1)
+            : Math.max(focusedIndex - 1, -1);
+          setFocused(next);
+          return;
+        }
         if (e.key === ' ' || e.key === 'ArrowLeft' || e.key === 'ArrowRight' ||
-            e.key === 'ArrowUp' || e.key === 'ArrowDown' || e.key === 'Home' || e.key === 'End') {
+            e.key === 'Home' || e.key === 'End') {
           e.preventDefault();
         }
       });
