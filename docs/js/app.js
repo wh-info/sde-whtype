@@ -276,7 +276,7 @@
       const buildDate = meta.sdeBuildDate
         ? ' (' + new Date(meta.sdeBuildDate).toLocaleDateString('en-US', dateFmt) + ')'
         : '';
-      metaEl.innerHTML = `SDE Build ${meta.sdeBuild}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · Serving EVE Online <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">Static Data Export</a>`;
+      metaEl.innerHTML = `SDE Build ${meta.sdeBuild}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · Serving data from EVE Online <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">Static Data Export</a>`;
     })
     .catch(() => {
       statsEl.textContent = 'Failed to load wormhole data.';
