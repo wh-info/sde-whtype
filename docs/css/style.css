@@ -1,3 +1,5 @@
+/* sde.whtype.info — v007 */
+
 :root {
   --bg:           #0a0e10;
   --surface:      #0c1c1c;
@@ -269,6 +271,7 @@ body {
   font-weight: 700;
   color: var(--accent);
   font-variant-numeric: tabular-nums;
+  padding-left: 1.5rem;
 }
 
 /* ── Footer ── */
@@ -433,7 +436,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
     font-size: 0.75rem;
     white-space: normal;
   }
-  .attr-val { font-size: 0.9rem; }
+  .attr-val { font-size: 0.9rem; padding-left: 0; }
 }
 
 /* Very narrow screens (320–360px): tighten the search bar so brand + input fit */
