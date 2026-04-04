@@ -289,6 +289,13 @@ footer a {
 }
 footer a:hover { border-bottom-color: var(--text-dim); }
 
+.footer-legal {
+  margin-top: 0.4rem;
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
 /* ── View toggle ── */
 
 .view-toggle {
