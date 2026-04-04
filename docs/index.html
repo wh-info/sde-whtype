@@ -265,7 +265,10 @@
       });
 
       // Clicking anywhere in the search display (including brand) focuses the input
-      searchDisplay.addEventListener('click', () => searchInput.focus());
+      // Guard: don't re-focus (and re-open keyboard) if a modal just opened
+      searchDisplay.addEventListener('click', () => {
+        if (!overlay.classList.contains('open')) searchInput.focus();
+      });
 
       // Hide results when clicking outside the search area
       document.addEventListener('click', e => {
