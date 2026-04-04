@@ -331,7 +331,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
 .about-body {
   padding-top: 1.5rem;
   color: var(--text-mid);
-  font-size: calc(0.9rem - 2px);
+  font-size: calc(0.9rem - 1px);
   line-height: 1.8;
   text-align: center;
 }
@@ -343,7 +343,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
 
 .about-ship {
   margin: 2rem auto 1.25rem;
-  max-width: 105px;
+  max-width: 118px;
 }
 .about-ship svg {
   width: 100%;
