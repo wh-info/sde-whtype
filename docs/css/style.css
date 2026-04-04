@@ -334,7 +334,7 @@ footer a:hover { border-bottom-color: var(--text-dim); }
 }
 
 @media (max-width: 500px) {
-  .main { padding: 2rem 1rem 1rem; }
+  .main { padding: 2.5rem 1rem 1rem; justify-content: flex-start; }
 
   /* Modal: tighter padding, prevent taller-than-viewport overflow */
   .modal {

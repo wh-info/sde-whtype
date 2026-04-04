@@ -186,6 +186,7 @@
         currentWh = wh;
         renderModal();
         overlay.classList.add('open');
+        searchInput.blur(); // dismiss mobile keyboard when modal opens
       }
 
       function closeModal() {
