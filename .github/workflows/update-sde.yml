@@ -2,8 +2,8 @@ name: Update SDE Wormhole Data
 
 on:
   schedule:
-    # Runs every 2 days at 14:00 UTC (even days: 2nd, 4th, 6th, etc.)
-    - cron: '0 14 */2 * *'
+    # Runs every Monday at 14:00 UTC
+    - cron: '0 14 * * 1'
   # Allow manual trigger from GitHub Actions tab
   workflow_dispatch:
 

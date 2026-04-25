@@ -157,15 +157,16 @@
 
   function getNextCheckIn() {
     const now = new Date();
-    let next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 15, 0, 0, 0));
-    for (let i = 0; i < 32; i++) {
-      if (next > now && next.getUTCDate() % 2 === 1) break;
-      next = new Date(next.getTime() + 24 * 60 * 60 * 1000);
-      next.setUTCHours(14, 0, 0, 0);
-    }
-    const h = Math.floor((next - now) / 36e5);
-    const m = Math.round(((next - now) % 36e5) / 60000);
-    return h === 0 ? `${m}min` : m === 0 ? `${h}h` : `${h}h ${m}min`;
+    const next = new Date(now);
+    next.setUTCHours(14, 0, 0, 0);
+    const daysUntilMonday = (1 - next.getUTCDay() + 7) % 7;
+    next.setUTCDate(next.getUTCDate() + daysUntilMonday);
+    if (next <= now) next.setUTCDate(next.getUTCDate() + 7);
+    const totalMin = Math.round((next - now) / 60000);
+    const d = Math.floor(totalMin / 1440);
+    const h = Math.floor((totalMin % 1440) / 60);
+    const m = totalMin % 60;
+    return [d && `${d}d`, h && `${h}h`, m && `${m}min`].filter(Boolean).join(' ') || '0min';
   }
 
   async function triggerSdeCheck() {
