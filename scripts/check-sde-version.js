@@ -25,6 +25,16 @@ const LATEST_URL = 'https://developers.eveonline.com/static-data/tranquility/lat
 const CHANGES_URL = 'https://developers.eveonline.com/static-data/tranquility/changes/';
 const VERSION_FILE = path.join(__dirname, '..', 'sde-version.txt');
 const WORMHOLES_FILE = path.join(__dirname, '..', 'docs', 'data', 'wormholes.json');
+const META_FILE = path.join(__dirname, '..', 'docs', 'data', 'sde-meta.json');
+
+function writeMeta(latestBuild, latestBuildDate) {
+  const meta = {
+    latestBuild,
+    latestBuildDate,
+    lastChecked: new Date().toISOString(),
+  };
+  fs.writeFileSync(META_FILE, JSON.stringify(meta, null, 2) + '\n');
+}
 
 // Collections we care about
 const RELEVANT_COLLECTIONS = ['types', 'typeDogma', 'dogmaAttributes'];
@@ -134,6 +144,7 @@ async function main() {
 
   if (remoteBuild <= localBuild) {
     console.log('SDE is up to date.');
+    writeMeta(remoteBuild, releaseDate);
     process.exit(1);
   }
 
@@ -146,11 +157,13 @@ async function main() {
   if (hasWormholeChanges) {
     console.log('Wormhole-relevant changes detected — proceeding with update.');
     fs.writeFileSync(VERSION_FILE, `${remoteBuild}\n${releaseDate}\n`);
+    writeMeta(remoteBuild, releaseDate);
     process.exit(0);
   } else {
     // Update version file so we don't re-check this build, but skip download
     console.log('Updating version tracker to skip this build in future checks.');
     fs.writeFileSync(VERSION_FILE, `${remoteBuild}\n${releaseDate}\n`);
+    writeMeta(remoteBuild, releaseDate);
     process.exit(1);
   }
 }

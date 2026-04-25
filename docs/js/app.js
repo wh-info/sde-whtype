@@ -1,6 +1,6 @@
-/* sde.whtype.info — v007 */
+/* sde.whtype.info — v008 */
 (function () {
-  const SITE_VERSION = '007';
+  const SITE_VERSION = '008';
   let wormholes = [];
   let meta = {};
   let currentWh = null;
@@ -264,21 +264,27 @@
     render();
   });
 
-  // Load data
-  fetch('data/wormholes.json')
-    .then(r => r.json())
-    .then(data => {
-      meta = data.meta;
-      wormholes = data.wormholes;
+  // Load data. wormholes.json is required; sde-meta.json is best-effort
+  // (workflow writes it on every run, but it may briefly lag a deploy).
+  Promise.all([
+    fetch('data/wormholes.json').then(r => r.json()),
+    fetch('data/sde-meta.json').then(r => r.ok ? r.json() : null).catch(() => null),
+  ]).then(([data, sdeMeta]) => {
+    meta = data.meta;
+    wormholes = data.wormholes;
 
-      const dateFmt = { year: 'numeric', month: 'short', day: 'numeric' };
-      const checkedDate = new Date(meta.generatedAt).toLocaleDateString('en-US', dateFmt);
-      const buildDate = meta.sdeBuildDate
-        ? ' (' + new Date(meta.sdeBuildDate).toLocaleDateString('en-US', dateFmt) + ')'
-        : '';
-      metaEl.innerHTML = `SDE Build ${meta.sdeBuild}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · Serving data from EVE Online <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">Static Data Export</a>`;
-    })
-    .catch(() => {
-      statsEl.textContent = 'Failed to load wormhole data.';
-    });
+    const dateFmt = { year: 'numeric', month: 'short', day: 'numeric' };
+    const buildNum  = sdeMeta?.latestBuild     ?? meta.sdeBuild;
+    const buildIso  = sdeMeta?.latestBuildDate ?? meta.sdeBuildDate;
+    const checkIso  = sdeMeta?.lastChecked     ?? meta.generatedAt;
+    const buildDate = buildIso ? ' (' + new Date(buildIso).toLocaleDateString('en-US', dateFmt) + ')' : '';
+    const checkedDate = new Date(checkIso).toLocaleDateString('en-US', dateFmt);
+
+    // triggerSdeCheck() compares against the latest build the workflow saw
+    meta.sdeBuild = buildNum;
+
+    metaEl.innerHTML = `SDE Build ${buildNum}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · Serving data from EVE Online <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">Static Data Export</a>`;
+  }).catch(() => {
+    statsEl.textContent = 'Failed to load wormhole data.';
+  });
 })();

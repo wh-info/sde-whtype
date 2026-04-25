@@ -35,16 +35,22 @@ jobs:
         # Exit code 1 = no update needed, not an error
         continue-on-error: true
 
-      # Even if no wormhole changes, commit updated sde-version.txt
-      # so we don't re-check the same build next run
-      - name: Commit version bump (no wormhole changes)
+      # No wormhole changes: commit sde-meta.json (always) and sde-version.txt
+      # (when it changed). Two-line commit message keeps heartbeat commits easy
+      # to spot in history.
+      - name: Commit heartbeat / version bump
         if: steps.check.outputs.updated != 'true'
         run: |
-          if ! git diff --quiet sde-version.txt; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add sde-version.txt
-            git commit -m "Skip SDE build $(cat sde-version.txt | tr -d '\n') — no wormhole changes"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/sde-meta.json sde-version.txt
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          elif git diff --cached --quiet -- sde-version.txt; then
+            git commit -m "chore: heartbeat"
+            git push
+          else
+            git commit -m "Skip SDE build $(head -n1 sde-version.txt | tr -d '\n') — no wormhole changes"
             git push
           fi
 
@@ -62,8 +68,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sde-version.txt docs/data/wormholes.json
-          git commit -m "Update wormhole data to SDE build $(cat sde-version.txt | tr -d '\n')"
+          git add sde-version.txt docs/data/wormholes.json docs/data/sde-meta.json
+          git commit -m "Update wormhole data to SDE build $(head -n1 sde-version.txt | tr -d '\n')"
           git push
 
       # Create a GitHub issue if any step fails

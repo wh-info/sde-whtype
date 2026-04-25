@@ -36,6 +36,24 @@ function getSdeUrl() {
   return `https://developers.eveonline.com/static-data/tranquility/eve-online-static-data-${build}-jsonl.zip`;
 }
 
+// CCP often publishes latest.jsonl before the ZIP lands on the CDN. Retry 404s
+// with exponential backoff (1, 2, 4, 8, 16 minutes) before giving up.
+const RETRY_DELAYS_MS = [60_000, 120_000, 240_000, 480_000, 960_000];
+
+async function fetchWithRetry(url) {
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
+    const res = await fetch(url);
+    if (res.ok) return res;
+    if (res.status !== 404 || attempt === RETRY_DELAYS_MS.length) {
+      console.error(`Download failed: HTTP ${res.status} ${res.statusText}`);
+      process.exit(1);
+    }
+    const wait = RETRY_DELAYS_MS[attempt];
+    console.log(`  ZIP not on CDN yet (404). Retrying in ${wait / 60_000} min...`);
+    await new Promise((r) => setTimeout(r, wait));
+  }
+}
+
 async function main() {
   const url = getSdeUrl();
   console.log(`Downloading: ${url}`);
@@ -43,11 +61,7 @@ async function main() {
   // Create tmp directory
   fs.mkdirSync(TMP_DIR, { recursive: true });
 
-  const res = await fetch(url);
-  if (!res.ok) {
-    console.error(`Download failed: HTTP ${res.status} ${res.statusText}`);
-    process.exit(1);
-  }
+  const res = await fetchWithRetry(url);
 
   const totalBytes = parseInt(res.headers.get('content-length') || '0', 10);
   if (totalBytes) {
