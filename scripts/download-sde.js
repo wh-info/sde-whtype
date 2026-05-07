@@ -27,7 +27,7 @@ const NEEDED_FILES = new Set([
 ]);
 
 function getSdeUrl() {
-  const build = fs.readFileSync(VERSION_FILE, 'utf-8').trim();
+  const build = fs.readFileSync(VERSION_FILE, 'utf-8').split('\n')[0].trim();
   if (!build || build === '0') {
     console.error('No SDE build number found. Run check-sde-version.js first.');
     process.exit(1);

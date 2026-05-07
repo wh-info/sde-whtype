@@ -1,6 +1,6 @@
-/* sde.whtype.info — v008 */
+/* sde.whtype.info — v009 */
 (function () {
-  const SITE_VERSION = '008';
+  const SITE_VERSION = '009';
   let wormholes = [];
   let meta = {};
   let currentWh = null;
@@ -277,14 +277,12 @@
     const dateFmt = { year: 'numeric', month: 'short', day: 'numeric' };
     const buildNum  = sdeMeta?.latestBuild     ?? meta.sdeBuild;
     const buildIso  = sdeMeta?.latestBuildDate ?? meta.sdeBuildDate;
-    const checkIso  = sdeMeta?.lastChecked     ?? meta.generatedAt;
     const buildDate = buildIso ? ' (' + new Date(buildIso).toLocaleDateString('en-US', dateFmt) + ')' : '';
-    const checkedDate = new Date(checkIso).toLocaleDateString('en-US', dateFmt);
 
     // triggerSdeCheck() compares against the latest build the workflow saw
     meta.sdeBuild = buildNum;
 
-    metaEl.innerHTML = `SDE Build ${buildNum}${buildDate} · Last checked: ${checkedDate} · ${meta.count} types · Serving data from EVE Online <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">Static Data Export</a>`;
+    metaEl.innerHTML = `SDE Build ${buildNum}${buildDate} · ${meta.count} types · Serving data from EVE Online <a href="https://developers.eveonline.com/docs/services/static-data/" target="_blank" rel="noopener">Static Data Export</a>`;
   }).catch(() => {
     statsEl.textContent = 'Failed to load wormhole data.';
   });
