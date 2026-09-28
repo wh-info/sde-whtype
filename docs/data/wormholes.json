@@ -1,8 +1,8 @@
 {
   "meta": {
-    "sdeBuild": 3458726,
-    "sdeBuildDate": "2026-08-06T11:07:36Z",
-    "generatedAt": "2026-08-10T15:01:58.268Z",
+    "sdeBuild": 3552227,
+    "sdeBuildDate": "2026-09-28T11:08:09Z",
+    "generatedAt": "2026-09-28T20:25:56.186Z",
     "count": 130
   },
   "wormholes": [
@@ -610,8 +610,8 @@
       "name": "I078",
       "typeID": 92287,
       "targetSystemClass": 25,
-      "maxStableTime": 270,
-      "maxStableMass": 100000000,
+      "maxStableTime": 720,
+      "maxStableMass": 750000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0,
       "targetDistribution": 4134
@@ -740,8 +740,8 @@
       "name": "L687",
       "typeID": 92288,
       "targetSystemClass": 25,
-      "maxStableTime": 270,
-      "maxStableMass": 100000000,
+      "maxStableTime": 720,
+      "maxStableMass": 750000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0,
       "targetDistribution": 4136
@@ -900,8 +900,8 @@
       "name": "O546",
       "typeID": 92289,
       "targetSystemClass": 25,
-      "maxStableTime": 270,
-      "maxStableMass": 100000000,
+      "maxStableTime": 720,
+      "maxStableMass": 750000000,
       "maxJumpMass": 62000000,
       "massRegeneration": 0,
       "targetDistribution": 4138
