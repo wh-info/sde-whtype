@@ -1,9 +1,9 @@
 {
   "meta": {
-    "sdeBuild": 3552227,
-    "sdeBuildDate": "2026-09-28T11:08:09Z",
-    "generatedAt": "2026-09-28T20:25:56.186Z",
-    "count": 130
+    "sdeBuild": 3665151,
+    "sdeBuildDate": "2026-11-02T11:07:56Z",
+    "generatedAt": "2026-11-02T22:38:42.916Z",
+    "count": 132
   },
   "wormholes": [
     {
@@ -907,6 +907,16 @@
       "targetDistribution": 4138
     },
     {
+      "name": "O753",
+      "typeID": 97882,
+      "targetSystemClass": 25,
+      "maxStableTime": 720,
+      "maxStableMass": 1000000000,
+      "maxJumpMass": 375000000,
+      "massRegeneration": 0,
+      "targetDistribution": 4188
+    },
+    {
       "name": "O883",
       "typeID": 30662,
       "targetSystemClass": 3,
@@ -1005,6 +1015,16 @@
       "maxJumpMass": 375000000,
       "massRegeneration": 0,
       "targetDistribution": 731
+    },
+    {
+      "name": "R327",
+      "typeID": 97881,
+      "targetSystemClass": 25,
+      "maxStableTime": 720,
+      "maxStableMass": 1000000000,
+      "maxJumpMass": 375000000,
+      "massRegeneration": 0,
+      "targetDistribution": 4187
     },
     {
       "name": "R474",
